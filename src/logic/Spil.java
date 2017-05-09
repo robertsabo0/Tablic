@@ -22,8 +22,9 @@ public class Spil {
 	}
 	
 	public List<Card> uzmi(int n){
-		List<Card> ret = spil.subList(spil.size() - n, spil.size());
-		
+		List<Card> ret = new ArrayList<>(n);
+		List<Card> tmp = spil.subList(spil.size() - n, spil.size());
+		tmp.forEach(ret::add);
 		spil.removeAll(ret);
 		
 		return ret;
