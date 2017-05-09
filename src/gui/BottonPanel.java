@@ -50,7 +50,7 @@ setLayout(new BoxLayout(this, BoxLayout.X_AXIS));
 		
 		JButton sestaKarta = new JButton("New button");
 		add(sestaKarta);
-		
+		//sdfsdfsdf
 		Component horizontalStrut_6 = Box.createHorizontalStrut(10);
 		add(horizontalStrut_6);
 	}
