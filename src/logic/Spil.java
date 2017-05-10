@@ -6,13 +6,13 @@ import java.util.List;
 
 public class Spil {
 
-	public List<Card> spil;
+	public List<Karta> spil;
 
 	public Spil() {
 		spil = new ArrayList<>(52);
 		for(Znak z : Znak.values()){
 			for(Vrednost v : Vrednost.values()){
-				spil.add(new Card(z, v));
+				spil.add(new Karta(z, v));
 			}
 		}
 	}
@@ -21,9 +21,9 @@ public class Spil {
 		Collections.shuffle(spil);;
 	}
 	
-	public List<Card> uzmi(int n){
-		List<Card> ret = new ArrayList<>(n);
-		List<Card> tmp = spil.subList(spil.size() - n, spil.size());
+	public List<Karta> uzmi(int n){
+		List<Karta> ret = new ArrayList<>(n);
+		List<Karta> tmp = spil.subList(spil.size() - n, spil.size());
 		tmp.forEach(ret::add);
 		spil.removeAll(ret);
 		

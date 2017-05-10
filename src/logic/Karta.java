@@ -1,11 +1,11 @@
 package logic;
 
-public class Card {
+public class Karta {
 	
 	private Znak znak;
 	private Vrednost vrednost;
 	
-	public Card(Znak znak, Vrednost vrednost) {
+	public Karta(Znak znak, Vrednost vrednost) {
 		super();
 		this.znak = znak;
 		this.vrednost = vrednost;
@@ -16,6 +16,17 @@ public class Card {
 
 	public Vrednost getVrednost() {
 		return vrednost;
+	}
+	
+	public int nosiPoena() {
+		int vr = 0;
+		if(vrednost.getVr() >= 10) vr = 1;
+		if(vrednost.equals(Vrednost.DESET) && znak.equals(Znak.KARO))
+			vr = 2;
+		if(vrednost.equals(Vrednost.DVA) && znak.equals(Znak.TREF))
+			vr = 1;
+		
+		return vr;
 	}
 	@Override
 	public int hashCode() {
@@ -33,7 +44,7 @@ public class Card {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Card other = (Card) obj;
+		Karta other = (Karta) obj;
 		if (vrednost != other.vrednost)
 			return false;
 		if (znak != other.znak)
