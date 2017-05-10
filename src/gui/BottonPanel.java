@@ -27,7 +27,7 @@ setLayout(new BoxLayout(this, BoxLayout.X_AXIS));
 		prvaKarta.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
-				prvaKarta.setBackground(Color.gray);
+				prvaKarta.setVisible(false);
 			}
 		});
 		prvaKarta.setBackground(Color.blue);
@@ -40,7 +40,7 @@ setLayout(new BoxLayout(this, BoxLayout.X_AXIS));
 		drugaKarta.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
-				drugaKarta.setBackground(Color.gray);
+				drugaKarta.setVisible(false);
 			}
 		});
 		drugaKarta.setBackground(Color.blue);
@@ -53,7 +53,7 @@ setLayout(new BoxLayout(this, BoxLayout.X_AXIS));
 		trecaKarta.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
-				trecaKarta.setBackground(Color.gray);
+				trecaKarta.setVisible(false);
 			}
 		});
 		trecaKarta.setBackground(Color.blue);
@@ -66,7 +66,7 @@ setLayout(new BoxLayout(this, BoxLayout.X_AXIS));
 		cetvrtaKarta.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
-				cetvrtaKarta.setBackground(Color.gray);
+				cetvrtaKarta.setVisible(false);
 			}
 		});
 		cetvrtaKarta.setBackground(Color.blue);
@@ -79,7 +79,7 @@ setLayout(new BoxLayout(this, BoxLayout.X_AXIS));
 		petaKarta.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
-				petaKarta.setBackground(Color.gray);
+				petaKarta.setVisible(false);
 			}
 		});
 		petaKarta.setBackground(Color.blue);
@@ -92,7 +92,7 @@ setLayout(new BoxLayout(this, BoxLayout.X_AXIS));
 		sestaKarta.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
-				sestaKarta.setBackground(Color.gray);
+				sestaKarta.setVisible(false);
 			}
 		});
 		sestaKarta.setBackground(Color.blue);
