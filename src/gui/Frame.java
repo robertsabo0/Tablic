@@ -1,14 +1,17 @@
 package gui;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
-import javax.swing.border.EmptyBorder;
 import javax.swing.JTable;
+import javax.swing.border.EmptyBorder;
+import javax.swing.table.DefaultTableCellRenderer;
 
 public class Frame extends JFrame {
 
@@ -37,7 +40,7 @@ public class Frame extends JFrame {
 	public Frame() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100,650, 400);
-		setMinimumSize(new Dimension(650, 400));
+		setMinimumSize(new Dimension(800, 600));
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -50,9 +53,19 @@ public class Frame extends JFrame {
 		contentPane.add(south, BorderLayout.SOUTH);
 		MyTableModel tm=new MyTableModel();
 		table = new JTable(tm);
-		table.setMaximumSize(new Dimension(20,400));
+		table.setMaximumSize(new Dimension(100,400));
 		JScrollPane sp=new JScrollPane(table);
-		
+		sp.setMaximumSize(new Dimension(175, 400));
+		sp.setPreferredSize(new Dimension(210, 400));
+		int columSize=table.getColumnModel().getColumn(0).getPreferredWidth();
+		table.getColumnModel().getColumn(0).setPreferredWidth(columSize/2+4);
+		table.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
+		table.setCellSelectionEnabled(false);
+		DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
+		centerRenderer.setHorizontalAlignment( JLabel.CENTER );
+		for(int i=0;i<3;i++){
+			table.getColumnModel().getColumn(i).setCellRenderer( centerRenderer );
+		}
 		contentPane.add(sp, BorderLayout.EAST);
 		  
 		JPanel centralni = new JCentralniPanel();

@@ -3,7 +3,9 @@ package gui;
 import javax.swing.table.AbstractTableModel;
 
 public class MyTableModel extends AbstractTableModel {
-
+	public MyTableModel() {
+		// TODO Auto-generated constructor stub
+	}
 	@Override
 	public int getColumnCount() {
 		return 3;
@@ -12,7 +14,7 @@ public class MyTableModel extends AbstractTableModel {
 	@Override
 	public int getRowCount() {
 		// TODO Auto-generated method stub
-		return 4;
+		return 40;
 	}
 
 	@Override
@@ -30,8 +32,15 @@ public class MyTableModel extends AbstractTableModel {
 
 	@Override
 	public Object getValueAt(int arg0, int arg1) {
-		// TODO Auto-generated method stub
-		return null;
+		if(arg0==getRowCount()-1 && arg1==0){
+			return "score";
+			
+		}
+		if(arg1==0){
+				return arg0+1;
+		}
+		
+		return 0;
 	}
 
 }
