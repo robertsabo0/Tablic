@@ -1,23 +1,23 @@
 package gui;
 
 import java.awt.BorderLayout;
-import java.awt.FlowLayout;
+import java.awt.Component;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
-import javax.swing.JButton;
-import javax.swing.JDialog;
-import javax.swing.JPanel;
-import javax.swing.border.EmptyBorder;
+import javax.swing.Box;
 import javax.swing.BoxLayout;
 import javax.swing.ButtonGroup;
-import javax.swing.ButtonModel;
-
-import java.awt.Component;
-import javax.swing.Box;
+import javax.swing.JButton;
+import javax.swing.JDialog;
 import javax.swing.JLabel;
-import javax.swing.JTextField;
+import javax.swing.JPanel;
 import javax.swing.JRadioButton;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
+import javax.swing.JTextField;
+import javax.swing.border.EmptyBorder;
+import java.awt.FlowLayout;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 public class DialogKlijentServer extends JDialog {
 
@@ -25,9 +25,10 @@ public class DialogKlijentServer extends JDialog {
 	JRadioButton rdbnKlijent;
 	JRadioButton rdbnServer;
 	ButtonGroup klijentServer;
-	JPanel panelKlijent;
 	JButton btnIgra;
-	private JTextField textField;
+	private JTextField textImeIgraca;
+	private JTextField textAdresaServera;
+	JPanel klijentPanel;
 
 	/**
 	 * Launch the application.
@@ -65,9 +66,9 @@ public class DialogKlijentServer extends JDialog {
 				playerPanel.add(horizontalStrut);
 			}
 			{
-				textField = new JTextField();
-				playerPanel.add(textField);
-				textField.setColumns(10);
+				textImeIgraca = new JTextField();
+				playerPanel.add(textImeIgraca);
+				textImeIgraca.setColumns(10);
 			}
 			{
 				Component horizontalStrut = Box.createHorizontalStrut(20);
@@ -89,7 +90,7 @@ public class DialogKlijentServer extends JDialog {
 					rdbnKlijent = new JRadioButton("Klijent");
 					rdbnKlijent.addActionListener(new ActionListener() {
 						public void actionPerformed(ActionEvent e) {
-							panelKlijent.setVisible(true);
+							klijentPanel.setVisible(true);
 							contentPanel.repaint();
 						}
 					});
@@ -99,8 +100,8 @@ public class DialogKlijentServer extends JDialog {
 					rdbnServer = new JRadioButton("Server");
 					rdbnServer.addActionListener(new ActionListener() {
 						public void actionPerformed(ActionEvent e) {
-							panelKlijent.setVisible(false);
-							contentPanel.repaint();
+							klijentPanel.setVisible(false);
+							btnIgra.setEnabled(true);
 						}
 					});
 					panelRadioButton.add(rdbnServer);
@@ -116,6 +117,7 @@ public class DialogKlijentServer extends JDialog {
 				connectPanel.add(panelBottom, BorderLayout.SOUTH);
 				{
 					btnIgra = new JButton("Igra");
+					btnIgra.setEnabled(false);
 					btnIgra.addActionListener(new ActionListener() {
 						public void actionPerformed(ActionEvent e) {
 						}
@@ -127,12 +129,27 @@ public class DialogKlijentServer extends JDialog {
 				}
 			}
 			{
-				panelKlijent = new JKlijentPanel();
-				panelKlijent.setVisible(false);
-				connectPanel.add(panelKlijent, BorderLayout.CENTER);
+				klijentPanel = new JPanel();
+				connectPanel.add(klijentPanel, BorderLayout.CENTER);
+				klijentPanel.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
+				klijentPanel.setVisible(false);
+				{
+					JLabel lblAdresaServera = new JLabel("Unesite adresu servera:");
+					klijentPanel.add(lblAdresaServera);
+				}
+				{
+					textAdresaServera = new JTextField();
+					textAdresaServera.addMouseListener(new MouseAdapter() {
+						@Override
+						public void mouseClicked(MouseEvent arg0) {
+							btnIgra.setEnabled(true);
+						}
+					});
+					klijentPanel.add(textAdresaServera);
+					textAdresaServera.setColumns(10);
+				}
 			}
 			
 		}
 	}
-
 }
