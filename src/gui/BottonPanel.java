@@ -18,16 +18,17 @@ public class BottonPanel extends JPanel {
 	 */
 	public BottonPanel() {
 setLayout(new BoxLayout(this, BoxLayout.X_AXIS));
-		
-		Component horizontalStrut = Box.createHorizontalStrut(10);
-		add(horizontalStrut);
 		ImageIcon image=new ImageIcon("pozadina.jpg");
+		
+		Component horizontalGlue_5 = Box.createHorizontalGlue();
+		add(horizontalGlue_5);
 		JButton prvaKarta = new JButton(image);
 		add(prvaKarta);
 		prvaKarta.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
 				prvaKarta.setVisible(false);
+				horizontalGlue_5.setVisible(false);
 			}
 		});
 		prvaKarta.setBackground(Color.blue);
@@ -41,6 +42,7 @@ setLayout(new BoxLayout(this, BoxLayout.X_AXIS));
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
 				drugaKarta.setVisible(false);
+				horizontalGlue.setVisible(false);
 			}
 		});
 		drugaKarta.setBackground(Color.blue);
@@ -54,6 +56,7 @@ setLayout(new BoxLayout(this, BoxLayout.X_AXIS));
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
 				trecaKarta.setVisible(false);
+				horizontalGlue_1.setVisible(false);
 			}
 		});
 		trecaKarta.setBackground(Color.blue);
@@ -67,6 +70,7 @@ setLayout(new BoxLayout(this, BoxLayout.X_AXIS));
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
 				cetvrtaKarta.setVisible(false);
+				horizontalGlue_2.setVisible(false);
 			}
 		});
 		cetvrtaKarta.setBackground(Color.blue);
@@ -80,6 +84,7 @@ setLayout(new BoxLayout(this, BoxLayout.X_AXIS));
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
 				petaKarta.setVisible(false);
+				horizontalGlue_3.setVisible(false);
 			}
 		});
 		petaKarta.setBackground(Color.blue);
@@ -93,12 +98,13 @@ setLayout(new BoxLayout(this, BoxLayout.X_AXIS));
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
 				sestaKarta.setVisible(false);
+				horizontalGlue_4.setVisible(false);
 			}
 		});
 		sestaKarta.setBackground(Color.blue);
 		
-		Component horizontalStrut_6 = Box.createHorizontalStrut(10);
-		add(horizontalStrut_6);
+		Component horizontalGlue_6 = Box.createHorizontalGlue();
+		add(horizontalGlue_6);
 	}
 
 }
