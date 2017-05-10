@@ -2,6 +2,8 @@ package gui;
 
 import java.awt.Color;
 import java.awt.Component;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 import javax.swing.Box;
 import javax.swing.BoxLayout;
@@ -22,6 +24,12 @@ setLayout(new BoxLayout(this, BoxLayout.X_AXIS));
 		ImageIcon image=new ImageIcon("pozadina.jpg");
 		JButton prvaKarta = new JButton(image);
 		add(prvaKarta);
+		prvaKarta.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent arg0) {
+				prvaKarta.setBackground(Color.gray);
+			}
+		});
 		prvaKarta.setBackground(Color.blue);
 		
 		Component horizontalGlue = Box.createHorizontalGlue();
@@ -29,6 +37,12 @@ setLayout(new BoxLayout(this, BoxLayout.X_AXIS));
 		
 		JButton drugaKarta = new JButton(image);
 		add(drugaKarta);
+		drugaKarta.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent arg0) {
+				drugaKarta.setBackground(Color.gray);
+			}
+		});
 		drugaKarta.setBackground(Color.blue);
 		
 		Component horizontalGlue_1 = Box.createHorizontalGlue();
@@ -36,6 +50,12 @@ setLayout(new BoxLayout(this, BoxLayout.X_AXIS));
 		
 		JButton trecaKarta = new JButton(image);
 		add(trecaKarta);
+		trecaKarta.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent arg0) {
+				trecaKarta.setBackground(Color.gray);
+			}
+		});
 		trecaKarta.setBackground(Color.blue);
 		
 		Component horizontalGlue_2 = Box.createHorizontalGlue();
@@ -43,6 +63,12 @@ setLayout(new BoxLayout(this, BoxLayout.X_AXIS));
 		
 		JButton cetvrtaKarta = new JButton(image);
 		add(cetvrtaKarta);
+		cetvrtaKarta.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent arg0) {
+				cetvrtaKarta.setBackground(Color.gray);
+			}
+		});
 		cetvrtaKarta.setBackground(Color.blue);
 		
 		Component horizontalGlue_3 = Box.createHorizontalGlue();
@@ -50,6 +76,12 @@ setLayout(new BoxLayout(this, BoxLayout.X_AXIS));
 		
 		JButton petaKarta = new JButton(image);
 		add(petaKarta);
+		petaKarta.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent arg0) {
+				petaKarta.setBackground(Color.gray);
+			}
+		});
 		petaKarta.setBackground(Color.blue);
 		
 		Component horizontalGlue_4 = Box.createHorizontalGlue();
@@ -57,6 +89,12 @@ setLayout(new BoxLayout(this, BoxLayout.X_AXIS));
 		
 		JButton sestaKarta = new JButton(image);
 		add(sestaKarta);
+		sestaKarta.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent arg0) {
+				sestaKarta.setBackground(Color.gray);
+			}
+		});
 		sestaKarta.setBackground(Color.blue);
 		
 		Component horizontalStrut_6 = Box.createHorizontalStrut(10);

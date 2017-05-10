@@ -38,6 +38,7 @@ public class Frame extends JFrame {
 	 * Create the frame.
 	 */
 	public Frame() {
+		setBackground(Color.BLUE);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100,650, 400);
 		setMinimumSize(new Dimension(800, 600));
@@ -47,9 +48,11 @@ public class Frame extends JFrame {
 		contentPane.setLayout(new BorderLayout(0, 0));
 		
 		JPanel north = new topPanel();
+		north.setBackground(Color.BLUE);
 		contentPane.add(north, BorderLayout.NORTH);
 		
 		JPanel south = new BottonPanel();
+		south.setBackground(Color.BLUE);
 		contentPane.add(south, BorderLayout.SOUTH);
 		MyTableModel tm=new MyTableModel();
 		table = new JTable(tm);
@@ -79,6 +82,7 @@ public class Frame extends JFrame {
 		centralni.add(glavniSpil, BorderLayout.EAST);
 		
 		JPanel talon = new JTablonPanel();
+		talon.setBackground(Color.BLUE);
 		centralni.add(talon, BorderLayout.CENTER);
 	}
 
