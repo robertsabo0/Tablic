@@ -1,9 +1,13 @@
 package gui;
 
+import java.awt.Color;
 import java.awt.Component;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 import javax.swing.Box;
 import javax.swing.BoxLayout;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 
@@ -17,40 +21,82 @@ setLayout(new BoxLayout(this, BoxLayout.X_AXIS));
 		
 		Component horizontalStrut = Box.createHorizontalStrut(10);
 		add(horizontalStrut);
-		
-		JButton prvaKarta = new JButton("New button");
+		ImageIcon image=new ImageIcon("pozadina.jpg");
+		JButton prvaKarta = new JButton(image);
 		add(prvaKarta);
+		prvaKarta.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent arg0) {
+				prvaKarta.setBackground(Color.gray);
+			}
+		});
+		prvaKarta.setBackground(Color.blue);
 		
 		Component horizontalGlue = Box.createHorizontalGlue();
 		add(horizontalGlue);
 		
-		JButton drugaKarta = new JButton("New button");
+		JButton drugaKarta = new JButton(image);
 		add(drugaKarta);
+		drugaKarta.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent arg0) {
+				drugaKarta.setBackground(Color.gray);
+			}
+		});
+		drugaKarta.setBackground(Color.blue);
 		
 		Component horizontalGlue_1 = Box.createHorizontalGlue();
 		add(horizontalGlue_1);
 		
-		JButton trecaKarta = new JButton("New button");
+		JButton trecaKarta = new JButton(image);
 		add(trecaKarta);
+		trecaKarta.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent arg0) {
+				trecaKarta.setBackground(Color.gray);
+			}
+		});
+		trecaKarta.setBackground(Color.blue);
 		
 		Component horizontalGlue_2 = Box.createHorizontalGlue();
 		add(horizontalGlue_2);
 		
-		JButton cetvrtaKarta = new JButton("New button");
+		JButton cetvrtaKarta = new JButton(image);
 		add(cetvrtaKarta);
+		cetvrtaKarta.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent arg0) {
+				cetvrtaKarta.setBackground(Color.gray);
+			}
+		});
+		cetvrtaKarta.setBackground(Color.blue);
 		
 		Component horizontalGlue_3 = Box.createHorizontalGlue();
 		add(horizontalGlue_3);
 		
-		JButton petaKarta = new JButton("New button");
+		JButton petaKarta = new JButton(image);
 		add(petaKarta);
+		petaKarta.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent arg0) {
+				petaKarta.setBackground(Color.gray);
+			}
+		});
+		petaKarta.setBackground(Color.blue);
 		
 		Component horizontalGlue_4 = Box.createHorizontalGlue();
 		add(horizontalGlue_4);
 		
-		JButton sestaKarta = new JButton("New button");
+		JButton sestaKarta = new JButton(image);
 		add(sestaKarta);
-		//sdfsdfsdf
+		sestaKarta.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent arg0) {
+				sestaKarta.setBackground(Color.gray);
+			}
+		});
+		sestaKarta.setBackground(Color.blue);
+		
 		Component horizontalStrut_6 = Box.createHorizontalStrut(10);
 		add(horizontalStrut_6);
 	}
