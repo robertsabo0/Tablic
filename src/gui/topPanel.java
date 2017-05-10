@@ -19,13 +19,14 @@ public class topPanel extends JPanel {
 	/**
 	 * Create the panel.
 	 */
+	static JButton prvaKarta,drugaKarta,trecaKarta,cetvrtaKarta,petaKarta,sestaKarta;
 	public topPanel() {
 		setLayout(new BoxLayout(this, BoxLayout.X_AXIS));
 		
 		Component horizontalStrut = Box.createHorizontalStrut(10);
 		add(horizontalStrut);
 		ImageIcon image=new ImageIcon("pozadina.jpg");
-		JButton prvaKarta = new JButton(image);
+		prvaKarta = new JButton(image);
 		prvaKarta.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
@@ -38,7 +39,7 @@ public class topPanel extends JPanel {
 		Component horizontalGlue = Box.createHorizontalGlue();
 		add(horizontalGlue);
 		
-		JButton drugaKarta = new JButton(image);
+		drugaKarta = new JButton(image);
 		add(drugaKarta);
 		drugaKarta.addMouseListener(new MouseAdapter() {
 			@Override
@@ -50,7 +51,7 @@ public class topPanel extends JPanel {
 		Component horizontalGlue_1 = Box.createHorizontalGlue();
 		add(horizontalGlue_1);
 		
-		JButton trecaKarta = new JButton(image);
+		trecaKarta = new JButton(image);
 		add(trecaKarta);
 		trecaKarta.addMouseListener(new MouseAdapter() {
 			@Override
@@ -62,7 +63,7 @@ public class topPanel extends JPanel {
 		Component horizontalGlue_2 = Box.createHorizontalGlue();
 		add(horizontalGlue_2);
 		
-		JButton cetvrtaKarta = new JButton(image);
+		cetvrtaKarta = new JButton(image);
 		add(cetvrtaKarta);
 		cetvrtaKarta.addMouseListener(new MouseAdapter() {
 			@Override
@@ -74,7 +75,7 @@ public class topPanel extends JPanel {
 		Component horizontalGlue_3 = Box.createHorizontalGlue();
 		add(horizontalGlue_3);
 		
-		JButton petaKarta = new JButton(image);
+		petaKarta = new JButton(image);
 		add(petaKarta);
 		petaKarta.addMouseListener(new MouseAdapter() {
 			@Override
@@ -86,7 +87,7 @@ public class topPanel extends JPanel {
 		Component horizontalGlue_4 = Box.createHorizontalGlue();
 		add(horizontalGlue_4);
 		
-		JButton sestaKarta = new JButton(image);
+		sestaKarta = new JButton(image);
 		add(sestaKarta);
 		sestaKarta.addMouseListener(new MouseAdapter() {
 			@Override
