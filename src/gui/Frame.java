@@ -6,6 +6,7 @@ import java.awt.EventQueue;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JTable;
 
@@ -47,10 +48,13 @@ public class Frame extends JFrame {
 		
 		JPanel south = new BottonPanel();
 		contentPane.add(south, BorderLayout.SOUTH);
+		MyTableModel tm=new MyTableModel();
+		table = new JTable(tm);
+		table.setMaximumSize(new Dimension(20,400));
+		JScrollPane sp=new JScrollPane(table);
 		
-		table = new JTable();
-		contentPane.add(table, BorderLayout.EAST);
-		
+		contentPane.add(sp, BorderLayout.EAST);
+		  
 		JPanel centralni = new JCentralniPanel();
 		contentPane.add(centralni, BorderLayout.CENTER);
 		centralni.setLayout(new BorderLayout(0, 0));
