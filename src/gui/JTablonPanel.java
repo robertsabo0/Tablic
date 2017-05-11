@@ -12,6 +12,7 @@ public class JTablonPanel extends JPanel {
 	/**
 	 * 
 	 */
+
 	private static final long serialVersionUID = -8691133858454493253L;
 	private int brojKarata;
 	private GridLayout layout;
@@ -19,7 +20,8 @@ public class JTablonPanel extends JPanel {
 	 * Create the panel.
 	 */
 	public JTablonPanel() {
-		setBackground(SystemColor.inactiveCaptionBorder);
+		//setBackground(SystemColor.inactiveCaptionBorder);
+		setBackground(Color.blue);
 		layout= new GridLayout(2, 2, 20, 20);
 		setLayout(layout);
 		
