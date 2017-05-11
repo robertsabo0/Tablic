@@ -14,10 +14,16 @@ import javax.swing.JPanel;
 public class BottonPanel extends JPanel {
 
 	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 7917254802978612604L;
+
+	/**
 	 * Create the panel.
 	 */
+	
 	public BottonPanel() {
-setLayout(new BoxLayout(this, BoxLayout.X_AXIS));
+		setLayout(new BoxLayout(this, BoxLayout.X_AXIS));
 		ImageIcon image=new ImageIcon("pozadina.jpg");
 		
 		Component horizontalGlue_5 = Box.createHorizontalGlue();

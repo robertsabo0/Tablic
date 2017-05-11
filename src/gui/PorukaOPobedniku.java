@@ -13,6 +13,10 @@ import java.awt.event.ActionEvent;
 
 public class PorukaOPobedniku extends JDialog {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -7914303740850132460L;
 	private final JPanel contentPanel = new JPanel();
 
 	/**

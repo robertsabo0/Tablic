@@ -15,6 +15,10 @@ import javax.swing.table.DefaultTableCellRenderer;
 
 public class Frame extends JFrame {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -5239550909572819317L;
 	private JPanel contentPane;
 	private JTable table;
 
@@ -51,9 +55,7 @@ public class Frame extends JFrame {
 		north.setBackground(Color.BLUE);
 		contentPane.add(north, BorderLayout.NORTH);
 		
-		JPanel south = new BottonPanel();
-		south.setBackground(Color.BLUE);
-		contentPane.add(south, BorderLayout.SOUTH);
+		
 		MyTableModel tm=new MyTableModel();
 		table = new JTable(tm);
 		table.setMaximumSize(new Dimension(100,400));
@@ -82,8 +84,11 @@ public class Frame extends JFrame {
 		centralni.add(glavniSpil, BorderLayout.EAST);
 		
 		JPanel talon = new JTablonPanel();
-		talon.setBackground(Color.BLUE);
 		centralni.add(talon, BorderLayout.CENTER);
+		
+		JPanel south = new BottonPanel();
+		south.setBackground(Color.BLUE);
+		contentPane.add(south, BorderLayout.SOUTH);
 	}
 
 }

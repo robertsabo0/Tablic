@@ -3,6 +3,11 @@ package gui;
 import javax.swing.table.AbstractTableModel;
 
 public class MyTableModel extends AbstractTableModel {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -4465403780399873766L;
+
 	public MyTableModel() {
 		// TODO Auto-generated constructor stub
 	}
