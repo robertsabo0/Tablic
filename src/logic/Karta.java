@@ -1,24 +1,31 @@
 package logic;
 
-public class Karta {
+import java.io.Serializable;
+
+public class Karta implements Cloneable, Serializable{
+	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	
 	private Znak znak;
 	private Vrednost vrednost;
 	
-	public Karta(Znak znak, Vrednost vrednost) {
+	Karta(Znak znak, Vrednost vrednost) {
 		super();
 		this.znak = znak;
 		this.vrednost = vrednost;
 	}
-	public Znak getZnak() {
+	Znak getZnak() {
 		return znak;
 	}
 
-	public Vrednost getVrednost() {
+	Vrednost getVrednost() {
 		return vrednost;
 	}
 	
-	public int nosiPoena() {
+	int nosiPoena() {
 		int vr = 0;
 		if(vrednost.getVr() >= 10) vr = 1;
 		if(vrednost.equals(Vrednost.DESET) && znak.equals(Znak.KARO))
@@ -56,7 +63,10 @@ public class Karta {
 		return vrednost+"-"+znak;
 	}
 
-	
+	@Override
+	public Karta clone(){
+		return new Karta(znak, vrednost);
+	}
 	
 	
 }

@@ -3,8 +3,6 @@ package logic;
 import java.util.ArrayList;
 import java.util.List;
 
-import sun.reflect.generics.reflectiveObjects.NotImplementedException;
-
 public class Igrac {
 
 	private String ime;
@@ -14,10 +12,11 @@ public class Igrac {
 	private List<Integer> poeni;
 	private List<Integer> poeniProtivnika;
 
+	Igrac(){
+		initialize();
+	}
 	
-	public void novaPartija(){
-		if(ruka==null)
-			initialize();
+	void novaPartija(){
 		poeni.add(0);
 		poeniProtivnika.add(0);
 		
@@ -33,7 +32,7 @@ public class Igrac {
 		poeniProtivnika = new ArrayList<>(10);
 	}
 
-	public void sracunajPoene(){
+	void sracunajPoene(){
 		Integer n = noseno.stream().map(Karta::nosiPoena).reduce(0, (a,b) -> a+b);
 		
 		if(noseno.size() > 26) n+=3;
@@ -41,30 +40,38 @@ public class Igrac {
 		poeni.add(n);
 	}
 	
-	public void tablaZaMene(){
-		int lastIndex = poeni.size()-1;
-		Integer h = poeni.get(lastIndex);
-		h++;
-		poeni.set(lastIndex,h);
+	void tablaZaMene(){
+		addOnLast(poeni);
+	}
+	void tablaZaProtivnika(){
+		addOnLast(poeniProtivnika);
 	}
 	
-	public void dodajURuku(List<Karta> l){
+	private static void addOnLast(List<Integer> p){
+		int lastIndex = p.size()-1;
+		Integer h = p.get(lastIndex);
+		h++;
+		p.set(lastIndex,h);
+	}
+	
+	void dodajURuku(List<Karta> l){
 		ruka.clear();
 		ruka.addAll(l);
 	}
 	
-	public void baciKartu(Karta k){
+	void baciKartu(Karta k){
 		ruka.remove(k);
 	}
 	
-	public void dadajUNosene(List<Karta> l){
+	void dadajUNosene(List<Karta> l){
 		noseno.addAll(l);
 	}
 	
-	public List<Karta> getURuci() {
+	List<Karta> getURuci() {
 		return ruka;
 	}
-	public List<Karta> getNoseno() {
+	
+	List<Karta> getNoseno() {
 		return noseno;
 	}
 
@@ -92,5 +99,14 @@ public class Igrac {
 		return poeniProtivnika.get(poeniProtivnika.size()-1);
 	}
 	
-	
+	public Integer getUkupnoPoeni(){
+		return addAll(poeni);
+	}
+	public Integer getUkupnoPoeniProtivnika(){
+		return addAll(poeniProtivnika);
+	}
+
+	private Integer addAll(List<Integer> p) {
+		return p.stream().reduce(0, (a,b) -> a+b);
+	}
 }
