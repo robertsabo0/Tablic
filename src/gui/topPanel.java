@@ -2,7 +2,8 @@ package gui;
 
 import java.awt.Color;
 import java.awt.Component;
-import java.awt.Dimension;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 import javax.swing.Box;
 import javax.swing.BoxLayout;
@@ -10,12 +11,12 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 
-import com.sun.prism.Image;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
-
 public class topPanel extends JPanel {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -1740250979628994678L;
 	/**
 	 * Create the panel.
 	 */

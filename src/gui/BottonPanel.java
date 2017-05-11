@@ -14,20 +14,27 @@ import javax.swing.JPanel;
 public class BottonPanel extends JPanel {
 
 	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 7917254802978612604L;
+
+	/**
 	 * Create the panel.
 	 */
+	
 	public BottonPanel() {
-setLayout(new BoxLayout(this, BoxLayout.X_AXIS));
-		
-		Component horizontalStrut = Box.createHorizontalStrut(10);
-		add(horizontalStrut);
+		setLayout(new BoxLayout(this, BoxLayout.X_AXIS));
 		ImageIcon image=new ImageIcon("pozadina.jpg");
+		
+		Component horizontalGlue_5 = Box.createHorizontalGlue();
+		add(horizontalGlue_5);
 		JButton prvaKarta = new JButton(image);
 		add(prvaKarta);
 		prvaKarta.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
-				prvaKarta.setBackground(Color.gray);
+				prvaKarta.setVisible(false);
+				horizontalGlue_5.setVisible(false);
 			}
 		});
 		prvaKarta.setBackground(Color.blue);
@@ -40,7 +47,8 @@ setLayout(new BoxLayout(this, BoxLayout.X_AXIS));
 		drugaKarta.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
-				drugaKarta.setBackground(Color.gray);
+				drugaKarta.setVisible(false);
+				horizontalGlue.setVisible(false);
 			}
 		});
 		drugaKarta.setBackground(Color.blue);
@@ -53,7 +61,8 @@ setLayout(new BoxLayout(this, BoxLayout.X_AXIS));
 		trecaKarta.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
-				trecaKarta.setBackground(Color.gray);
+				trecaKarta.setVisible(false);
+				horizontalGlue_1.setVisible(false);
 			}
 		});
 		trecaKarta.setBackground(Color.blue);
@@ -66,7 +75,8 @@ setLayout(new BoxLayout(this, BoxLayout.X_AXIS));
 		cetvrtaKarta.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
-				cetvrtaKarta.setBackground(Color.gray);
+				cetvrtaKarta.setVisible(false);
+				horizontalGlue_2.setVisible(false);
 			}
 		});
 		cetvrtaKarta.setBackground(Color.blue);
@@ -79,7 +89,8 @@ setLayout(new BoxLayout(this, BoxLayout.X_AXIS));
 		petaKarta.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
-				petaKarta.setBackground(Color.gray);
+				petaKarta.setVisible(false);
+				horizontalGlue_3.setVisible(false);
 			}
 		});
 		petaKarta.setBackground(Color.blue);
@@ -92,13 +103,14 @@ setLayout(new BoxLayout(this, BoxLayout.X_AXIS));
 		sestaKarta.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
-				sestaKarta.setBackground(Color.gray);
+				sestaKarta.setVisible(false);
+				horizontalGlue_4.setVisible(false);
 			}
 		});
 		sestaKarta.setBackground(Color.blue);
 		
-		Component horizontalStrut_6 = Box.createHorizontalStrut(10);
-		add(horizontalStrut_6);
+		Component horizontalGlue_6 = Box.createHorizontalGlue();
+		add(horizontalGlue_6);
 	}
 
 }

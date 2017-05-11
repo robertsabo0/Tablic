@@ -1,30 +1,33 @@
 package gui;
 
-import javax.swing.JPanel;
-import javax.swing.BoxLayout;
-import javax.swing.ImageIcon;
-import javax.swing.JButton;
-
-import java.awt.Color;
-import java.awt.Component;
-import javax.swing.Box;
 import java.awt.GridLayout;
 
+import javax.swing.ImageIcon;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import java.awt.Color;
+
 public class JSpiloviPanel extends JPanel {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -1660184878032792770L;
 
 	/**
 	 * Create the panel.
 	 */
 	public JSpiloviPanel() {
+		setBackground(Color.BLUE);
 		setLayout(new GridLayout(2, 1, 0, 0));
 		ImageIcon image=new ImageIcon("pozadina.jpg");
-		JButton goreKarte = new JButton(image);
-		goreKarte.setBackground(Color.blue);
-		add(goreKarte);
 		
-		JButton doleKarte = new JButton(image);
-		doleKarte.setBackground(Color.blue);
-		add(doleKarte);
+		JLabel lblSpil1 = new JLabel(image);
+		add(lblSpil1);
+		
+		JLabel lblSpil2 = new JLabel(image);
+		add(lblSpil2);
+		
 
 	}
 
