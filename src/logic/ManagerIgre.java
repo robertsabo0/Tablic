@@ -1,24 +1,32 @@
 package logic;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
+
+import javax.swing.JOptionPane;
 
 public class ManagerIgre {
 	public static int BROJ_KARATA_NA_TABLI = 4;
 	public static int BROJ_KARATA_U_RUCI = 6;
 	
 	private static Spil spil;
+	//RoiiTODO : private !
 	private static Igrac igrac;
 	
 	private static boolean igramPrvi;
 	private static boolean poslednjiNosio;
 	
-	public static List<Karta> tabla;
+	private static List<Karta> tabla;
 	
 	static{
 		igrac = new Igrac();
 		tabla = new ArrayList<>(26);
 	}
+	
+	public static Igrac igrac(){ return igrac;}
+	public static List<Karta> tabla(){ return tabla;}
+	
 	public static void zapocniIgru(){
 		Spil s = new Spil();
 		
@@ -31,17 +39,24 @@ public class ManagerIgre {
 		prvoNaTabli.stream().map(Karta::clone).forEach(mojSpil::add);
 		tudjiSpil.addAll(prvoNaTabli);
 		
+		mojSpil.addAll(s.uzmi(24));
+		tudjiSpil.addAll(s.uzmi(24));
+		
 		boolean igramPrvi = igrac.getPoeni().size() % 2 == 0;
 		
-		zapocniIgru(s, igramPrvi);
+		// test
+		igramPrvi = false;
+		// test
+		zapocniIgru(new Spil(mojSpil), igramPrvi);
 		// Robii.TODO
-		// KomunikacijaManager.posaljiSpil(tudjiSpil, !igramPrvi);
+		// KomunikacijaManager.posaljiSpil(new Spil(mojSpil), !igramPrvi);
 		
 	}
 	
 	
 	public static void zapocniIgru(Spil s, boolean pf){
 		igramPrvi = pf;
+		spil = s;
 		igrac.novaPartija();
 		postaviNaTablu();
 		novaRuka();
@@ -60,20 +75,24 @@ public class ManagerIgre {
 			// wait
 		}
 	}
-	
-	public static void odigraoSam(Karta bacena, List<Karta> nositi) throws NeMozeSeNositiException{
-		if(!mozeNositi(bacena, nositi))
-			throw new NeMozeSeNositiException(bacena, nositi);
-		
-		boolean pisiTablu = srediTablu(bacena, nositi);
+	public static void odigraoSam(Karta bacena){
+		try{
+			odigraoSam(bacena, new LinkedList<Karta>());
+		} catch (NeMozeSeNositiException e){}
+	}
+	public static void odigraoSam(Karta bacena, List<Karta> nos) throws NeMozeSeNositiException{
+		if(!mozeNositi(bacena, nos))
+			throw new NeMozeSeNositiException(bacena, nos);
+		List<Karta> nositi = new ArrayList<>(nos);
+		boolean pisiTablu = srediTablu(bacena, new ArrayList<>(nos));
 		
 		if(pisiTablu)
 			igrac.tablaZaMene();
 		
 		// bacena karta
-		if(nositi.size() == 0){
-			igrac.baciKartu(bacena);
-		} else {
+
+		igrac.baciKartu(bacena);
+		if(nositi.size() > 0){
 			poslednjiNosio = true;
 			// noseno
 			List<Karta> uPoene = new ArrayList<>(nositi);
@@ -121,6 +140,24 @@ public class ManagerIgre {
 	
 
 	private static void checkResult() {
-		if()
+		if(spil.preostaloKarata()>0){
+			novaRuka();
+		} else {
+			if(poslednjiNosio)
+				igrac.dadajUNosene(tabla);
+			
+			igrac.sracunajPoene();
+			
+			if(krajIgre()){
+				JOptionPane.showMessageDialog(null, "Kraj igre!");
+			} else {
+				// RobiiTODO
+				zapocniIgru();
+			}
+		}
+	}
+	
+	private static boolean krajIgre(){
+		return igrac.getUkupnoPoeni() > 100 || igrac.getUkupnoPoeniProtivnika() > 100;
 	}
 }

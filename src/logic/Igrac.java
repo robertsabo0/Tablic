@@ -34,23 +34,24 @@ public class Igrac {
 
 	void sracunajPoene(){
 		Integer n = noseno.stream().map(Karta::nosiPoena).reduce(0, (a,b) -> a+b);
-		
+		Integer n_pr = 23-n;
 		if(noseno.size() > 26) n+=3;
 		
-		poeni.add(n);
+		addOnLast(poeni, n);
+		addOnLast(poeniProtivnika, n_pr);
 	}
 	
 	void tablaZaMene(){
-		addOnLast(poeni);
+		addOnLast(poeni, 1);
 	}
 	void tablaZaProtivnika(){
-		addOnLast(poeniProtivnika);
+		addOnLast(poeniProtivnika, 1);
 	}
 	
-	private static void addOnLast(List<Integer> p){
+	private static void addOnLast(List<Integer> p, int br){
 		int lastIndex = p.size()-1;
 		Integer h = p.get(lastIndex);
-		h++;
+		h+= br;
 		p.set(lastIndex,h);
 	}
 	
@@ -67,7 +68,7 @@ public class Igrac {
 		noseno.addAll(l);
 	}
 	
-	List<Karta> getURuci() {
+	public List<Karta> getURuci() {
 		return ruka;
 	}
 	
