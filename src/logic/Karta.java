@@ -1,12 +1,21 @@
 package logic;
 
 import java.io.Serializable;
+import java.util.HashMap;
+import java.util.Map;
 
 public class Karta implements Cloneable, Serializable{
 	
 	/**
 	 * 
 	 */
+	private static Map<String, String> mapa;
+	
+	static{
+		inicijalizujMapu();
+		
+	}
+	
 	private static final long serialVersionUID = 1L;
 	
 	private Znak znak;
@@ -16,12 +25,62 @@ public class Karta implements Cloneable, Serializable{
 		this.znak = znak;
 		this.vrednost = vrednost;
 	}
+	
+	private static void inicijalizujMapu() {
+		mapa=new HashMap<>();
+		//
+		for(Znak z : Znak.values()){
+			for(Vrednost v : Vrednost.values()){
+				String kljuc=new String(v+"-"+z);
+				String simbol="";
+				String znak="";
+				
+				switch(v.toString()){
+				case "2": case "3": case "4": case "5":case "6":case "7": case "8": case "9":case "10":
+					simbol=v.toString();
+					break;
+				case "A":
+					simbol="11";
+					break;
+				case "J":
+					simbol="12";
+					break;
+				case "Q":
+					simbol="13";
+				default:
+					simbol="14";
+				}
+				
+				switch(z){
+				case KARO:
+					znak="kocka";
+					break;
+				case HERC:
+					znak="srce";
+					break;
+				case PIK:
+					znak="pik";
+					break;
+				default:
+					znak="tref";
+				}
+				
+				String vr = "img/"+simbol+znak+".png";
+				mapa.put(kljuc, vr);
+			}
+		}
+		
+	}
 	Znak getZnak() {
 		return znak;
 	}
 
 	Vrednost getVrednost() {
 		return vrednost;
+	}
+	
+	String getSlika(){
+		return mapa.get(this.toString());
 	}
 	
 	int nosiPoena() {
