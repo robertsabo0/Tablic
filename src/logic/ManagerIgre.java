@@ -78,12 +78,12 @@ public class ManagerIgre {
 	private static void stampajTablu() {
 		System.out.println("Tabla:");
 		tabla.forEach(t -> System.out.print(t+" "));
-		System.out.println("-----------");
+		System.out.println("\n-----------");
 	}
 	private static void stampajRuku() {
 		System.out.println("Ruka:");
 		igrac.getURuci().forEach(t -> System.out.print(t+" "));
-		System.out.println("+++");
+		System.out.println("\n+++");
 	}
 	
 	public static void novaRuka(){
@@ -133,6 +133,8 @@ public class ManagerIgre {
 	}
 
 	public static void odigraoJe(Karta bacena, List<Karta> nositi){
+		if(DEBUG) System.out.println("Noseno sa "+bacena+" : "+nositi);
+
 		boolean pisiTablu = srediTablu(bacena, nositi);
 		
 		if(pisiTablu)
