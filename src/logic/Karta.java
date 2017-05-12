@@ -11,7 +11,6 @@ public class Karta implements Cloneable, Serializable{
 	
 	private Znak znak;
 	private Vrednost vrednost;
-	
 	Karta(Znak znak, Vrednost vrednost) {
 		super();
 		this.znak = znak;
