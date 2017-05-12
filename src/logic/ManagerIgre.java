@@ -7,8 +7,8 @@ import java.util.List;
 import javax.swing.JOptionPane;
 
 public class ManagerIgre {
-	public static int BROJ_KARATA_NA_TABLI = 4;
-	public static int BROJ_KARATA_U_RUCI = 6;
+	public static final int BROJ_KARATA_NA_TABLI = 4;
+	public static final int BROJ_KARATA_U_RUCI = 6;
 	
 	private static Spil spil;
 	//RoiiTODO : private !
@@ -18,6 +18,8 @@ public class ManagerIgre {
 	private static boolean poslednjiNosio;
 	
 	private static List<Karta> tabla;
+	
+	final static boolean DEBUG = true;
 	
 	static{
 		igrac = new Igrac();
@@ -31,6 +33,8 @@ public class ManagerIgre {
 		Spil s = new Spil();
 		
 		s.promesaj();
+		
+		if(DEBUG) System.out.println("Zapocinjanje igre");
 		
 		List<Karta> prvoNaTabli = s.uzmi(BROJ_KARATA_NA_TABLI);
 		List<Karta> mojSpil = new ArrayList<>(28);
@@ -55,6 +59,9 @@ public class ManagerIgre {
 	
 	
 	public static void zapocniIgru(Spil s, boolean pf){
+
+		if(DEBUG) System.out.println("Dobio sam spil... Igram prvi: "+pf);
+		
 		igramPrvi = pf;
 		spil = s;
 		igrac.novaPartija();
@@ -64,25 +71,44 @@ public class ManagerIgre {
 	
 	private static void postaviNaTablu() {
 		tabla.addAll(spil.uzmi(BROJ_KARATA_NA_TABLI));
+		if(DEBUG) stampajTablu();
 	}
 
 
+	private static void stampajTablu() {
+		System.out.println("Tabla:");
+		tabla.forEach(t -> System.out.print(t+" "));
+		System.out.println("-----------");
+	}
+	private static void stampajRuku() {
+		System.out.println("Ruka:");
+		igrac.getURuci().forEach(t -> System.out.print(t+" "));
+		System.out.println("+++");
+	}
+	
 	public static void novaRuka(){
 		List<Karta> r = spil.uzmi(BROJ_KARATA_U_RUCI);
 		igrac.dodajURuku(r);
+		
+		if(DEBUG) stampajRuku();
 		
 		if(!igramPrvi){
 			// wait
 		}
 	}
 	public static void odigraoSam(Karta bacena){
+		if(DEBUG) System.out.println("Bacena karta: "+bacena);
 		try{
 			odigraoSam(bacena, new LinkedList<Karta>());
 		} catch (NeMozeSeNositiException e){}
 	}
+	
 	public static void odigraoSam(Karta bacena, List<Karta> nos) throws NeMozeSeNositiException{
 		if(!mozeNositi(bacena, nos))
 			throw new NeMozeSeNositiException(bacena, nos);
+
+		if(DEBUG) System.out.println("Noseno sa "+bacena+" : "+nos);
+		
 		List<Karta> nositi = new ArrayList<>(nos);
 		boolean pisiTablu = srediTablu(bacena, new ArrayList<>(nos));
 		
@@ -140,6 +166,9 @@ public class ManagerIgre {
 	
 
 	private static void checkResult() {
+		
+		if(DEBUG) System.out.println("Checking rezultat");
+		
 		if(spil.preostaloKarata()>0){
 			novaRuka();
 		} else {
@@ -152,12 +181,15 @@ public class ManagerIgre {
 				JOptionPane.showMessageDialog(null, "Kraj igre!");
 			} else {
 				// RobiiTODO
+				
+				// if I'm a server... 
 				zapocniIgru();
 			}
 		}
 	}
 	
 	private static boolean krajIgre(){
+		if(DEBUG) System.out.println("Igra je zavrsena");
 		return igrac.getUkupnoPoeni() > 100 || igrac.getUkupnoPoeniProtivnika() > 100;
 	}
 }
