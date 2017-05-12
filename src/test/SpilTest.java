@@ -1,9 +1,11 @@
 package test;
 
 import java.util.List;
+import java.util.Scanner;
 
 import logic.Karta;
 import logic.ManagerIgre;
+import logic.NeMozeSeNositiException;
 
 public class SpilTest {
 
@@ -12,17 +14,9 @@ public class SpilTest {
 	 * @throws Exception
 	 */
 	public static void main(String... args) throws Exception{
-		ManagerIgre.zapocniIgru();
-		List<Karta> ruka = ManagerIgre.igrac().getURuci();
-		while(true){
-			ManagerIgre.odigraoSam(ruka.get(0));
-			ManagerIgre.odigraoSam(ruka.get(0));
-			ManagerIgre.odigraoSam(ruka.get(0));
-			ManagerIgre.odigraoSam(ruka.get(0), ManagerIgre.tabla());
-			ManagerIgre.odigraoSam(ruka.get(0));
-			ManagerIgre.odigraoSam(ruka.get(0));
-		}
+		ManagerIgre.zapocniIgru(null);
 		
+		playTest();
 		
 		/* 
 		 * Ovde vidite kako to otprilike izgleda
@@ -39,5 +33,21 @@ public class SpilTest {
 		 * 
 		 * otprilike to je to zasad... nadogradnje kad sednemo zajedno
 		 * */
+	}
+
+	static void playTest() throws NeMozeSeNositiException {
+		List<Karta> ruka = ManagerIgre.igrac().getURuci();
+		Scanner scanner = new Scanner(System.in);
+		
+		while(true){
+			scanner.nextLine();
+			ManagerIgre.odigraoSam(ruka.get(0));
+			scanner.nextLine();
+			ManagerIgre.odigraoSam(ruka.get(0));
+			scanner.nextLine();
+			ManagerIgre.odigraoSam(ruka.get(0));
+			scanner.nextLine();
+			ManagerIgre.odigraoSam(ruka.get(0), ManagerIgre.tabla());
+		}	
 	}
 }

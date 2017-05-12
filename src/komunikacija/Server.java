@@ -3,6 +3,8 @@ package komunikacija;
 import java.rmi.RemoteException;
 import java.util.LinkedList;
 
+import logic.ManagerIgre;
+
 public class Server extends KarteImplementacija implements ServerInterfejs{
 	
 	private KlijentInterfejs klijent=null;
@@ -20,8 +22,7 @@ public class Server extends KarteImplementacija implements ServerInterfejs{
 		klijent=kl;
 		
 		// TODO spil
-		
-		kl.posaljiSpil(new LinkedList<>());
+		ManagerIgre.zapocniIgru(klijent);
 		// posalji spil
 	}
 

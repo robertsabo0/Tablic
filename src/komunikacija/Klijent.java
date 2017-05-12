@@ -1,8 +1,9 @@
 package komunikacija;
 
 import java.rmi.RemoteException;
-import java.rmi.server.UnicastRemoteObject;
-import java.util.List;
+
+import logic.ManagerIgre;
+import logic.Spil;
 
 public class Klijent extends KarteImplementacija implements KlijentInterfejs{
 
@@ -24,11 +25,8 @@ public class Klijent extends KarteImplementacija implements KlijentInterfejs{
 	}
 
 	@Override
-	public void posaljiSpil(List<String> spil) throws RemoteException {
-		//return spil;
-		
-		//TODO 
-		// test: stampati
+	public void posaljiSpil(Spil s, boolean b) throws RemoteException {
+		ManagerIgre.zapocniIgru(s, b);
 	}
 
 }

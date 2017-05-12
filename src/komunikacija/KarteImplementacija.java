@@ -13,7 +13,7 @@ public abstract class KarteImplementacija  extends UnicastRemoteObject  implemen
 	public boolean blokiran;
 	public boolean amIServer;
 	
-	KarteInterfejs drugi;
+	public KarteInterfejs drugi;
 	
 	protected KarteImplementacija() throws RemoteException {
 		super();
