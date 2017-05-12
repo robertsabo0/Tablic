@@ -1,10 +1,14 @@
 package logic;
 
+import java.rmi.RemoteException;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
 import javax.swing.JOptionPane;
+
+import komunikacija.KlijentInterfejs;
+import komunikacija.MenagerKomunikacije;
 
 public class ManagerIgre {
 	public static final int BROJ_KARATA_NA_TABLI = 4;
@@ -21,15 +25,21 @@ public class ManagerIgre {
 	
 	final static boolean DEBUG = true;
 	
-	static{
+	static MenagerKomunikacije menagerKomunikacije;
+	
+	static {
 		igrac = new Igrac();
 		tabla = new ArrayList<>(26);
+		menagerKomunikacije = new MenagerKomunikacije();
 	}
 	
 	public static Igrac igrac(){ return igrac;}
 	public static List<Karta> tabla(){ return tabla;}
+	public static MenagerKomunikacije menagerKomunikacije(){ return menagerKomunikacije;}
 	
-	public static void zapocniIgru(){
+	private static KlijentInterfejs klijent; //Robii.TODO
+	public static void zapocniIgru(KlijentInterfejs kl){
+		klijent = kl;
 		Spil s = new Spil();
 		
 		s.promesaj();
@@ -52,8 +62,16 @@ public class ManagerIgre {
 		igramPrvi = false;
 		// test
 		zapocniIgru(new Spil(mojSpil), igramPrvi);
+		
+		if(klijent!=null){
 		// Robii.TODO
-		// KomunikacijaManager.posaljiSpil(new Spil(mojSpil), !igramPrvi);
+		try {
+			klijent.posaljiSpil(new Spil(tudjiSpil), !igramPrvi);
+		} catch (RemoteException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		}
 		
 	}
 	
@@ -126,7 +144,7 @@ public class ManagerIgre {
 			igrac.dadajUNosene(uPoene);
 			
 		}
-		
+
 		if(igrac.getURuci().isEmpty() && !igramPrvi){
 			checkResult();
 		}
@@ -167,7 +185,7 @@ public class ManagerIgre {
 	}
 	
 
-	private static void checkResult() {
+	private static void checkResult(){
 		
 		if(DEBUG) System.out.println("Checking rezultat");
 		
@@ -185,7 +203,7 @@ public class ManagerIgre {
 				// RobiiTODO
 				
 				// if I'm a server... 
-				zapocniIgru();
+				zapocniIgru(klijent);
 			}
 		}
 	}

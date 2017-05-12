@@ -1,10 +1,11 @@
 package logic;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-public class Spil {
+public class Spil implements Serializable{
 
 	public List<Karta> spil;
 
@@ -27,7 +28,7 @@ public class Spil {
 	
 	public List<Karta> uzmi(int n){
 		List<Karta> ret = new ArrayList<>(n);
-		List<Karta> tmp = spil.subList(spil.size() - n, spil.size());
+		List<Karta> tmp = spil.subList(0, n);
 		tmp.forEach(ret::add);
 		spil.removeAll(ret);
 		

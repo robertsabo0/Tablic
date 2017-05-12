@@ -6,7 +6,9 @@ import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
 
 public class MenagerKomunikacije {
-	KarteImplementacija me;
+	
+	public KarteImplementacija me;
+	
 	public void kreirajKonekciju(){
 		try{
 			Server server=new Server();
