@@ -21,6 +21,10 @@ import java.awt.event.MouseEvent;
 
 public class DialogKlijentServer extends JDialog {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 3581087770290560456L;
 	private final JPanel contentPanel = new JPanel();
 	JRadioButton rdbnKlijent;
 	JRadioButton rdbnServer;

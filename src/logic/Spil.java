@@ -17,6 +17,10 @@ public class Spil {
 		}
 	}
 	
+	public Spil(List<Karta> l){
+		spil = l;
+	}
+	
 	public void promesaj(){
 		Collections.shuffle(spil);;
 	}
