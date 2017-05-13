@@ -123,6 +123,7 @@ public class JTalonPanel extends JPanel {
 		}
 		for(Karta o:oznacene){
 			skiniKartu(o);
+			
 		}
 	}
 

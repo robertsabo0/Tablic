@@ -13,6 +13,8 @@ import javax.swing.JTable;
 import javax.swing.border.EmptyBorder;
 import javax.swing.table.DefaultTableCellRenderer;
 
+import logic.ManagerIgre;
+
 public class Frame extends JFrame {
 
 	/**
@@ -56,7 +58,7 @@ public class Frame extends JFrame {
 		contentPane.add(north, BorderLayout.NORTH);
 		
 		
-		MyTableModel tm=new MyTableModel();
+		MyTableModel tm=new MyTableModel(ManagerIgre.igrac());
 		table = new JTable(tm);
 		table.setMaximumSize(new Dimension(100,400));
 		JScrollPane sp=new JScrollPane(table);
