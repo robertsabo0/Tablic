@@ -47,7 +47,7 @@ public class Karta implements Cloneable, Serializable{
 					break;
 				case "Q":
 					simbol="13";
-				default:
+				case "K":
 					simbol="14";
 				}
 				
@@ -65,7 +65,7 @@ public class Karta implements Cloneable, Serializable{
 					znak="tref";
 				}
 				
-				String vr = "img/"+simbol+znak+".png";
+				String vr = "img/"+simbol+","+znak+".png";
 				mapa.put(kljuc, vr);
 			}
 		}
@@ -79,7 +79,7 @@ public class Karta implements Cloneable, Serializable{
 		return vrednost;
 	}
 	
-	String getSlika(){
+	public String getSlika(){
 		return mapa.get(this.toString());
 	}
 	

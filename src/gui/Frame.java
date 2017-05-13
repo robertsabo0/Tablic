@@ -83,10 +83,10 @@ public class Frame extends JFrame {
 		JPanel glavniSpil = new JGlavniSpilPanel();
 		centralni.add(glavniSpil, BorderLayout.EAST);
 		
-		JPanel talon = new JTablonPanel();
+		JTalonPanel talon = new JTalonPanel();
 		centralni.add(talon, BorderLayout.CENTER);
 		
-		JPanel south = new BottonPanel();
+		JPanel south = new BottonPanel(talon);
 		south.setBackground(Color.BLUE);
 		contentPane.add(south, BorderLayout.SOUTH);
 	}
