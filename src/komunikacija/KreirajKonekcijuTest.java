@@ -8,7 +8,7 @@ public class KreirajKonekcijuTest {
 	
 	public static void main(String[] args) throws RemoteException, NotBoundException{
 		MenagerKomunikacije menager=new MenagerKomunikacije();
-		menager.kreirajKonekciju();
+		menager.kreirajKonekciju("Igrac1");
 		
 //		Scanner scan=new Scanner(System.in);
 //		String text=scan.nextLine();
