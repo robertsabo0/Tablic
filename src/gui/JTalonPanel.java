@@ -27,16 +27,20 @@ public class JTalonPanel extends JPanel {
 	private GridLayout layout;
 	private static  List<JButton> dugmadi= new ArrayList<>();
 	private static Map <Karta,JButton> kartaDugme= new HashMap<>();
+	private topPanel top;
+	private Frame frame;
 	/**
 	 * Create the panel.
 	 */
-	public JTalonPanel() {
+	public JTalonPanel(topPanel top, Frame frame) {
+		ManagerIgre.zapocniIgru(null);
+		this.frame = frame;
+		this.top=top;
 		setBackground(Color.blue);
 		setPreferredSize(new Dimension(200, 100));
 		setMaximumSize(new Dimension(100, 250));
 		layout= new GridLayout(2, 2, 20, 20);
 		setLayout(layout);
-		ManagerIgre.zapocniIgru(null);
 		getTalonDugmadi(ManagerIgre.tabla());
 		for(int i=0;i<dugmadi.size();i++){
 			add(dugmadi.get(i));
@@ -64,6 +68,7 @@ public class JTalonPanel extends JPanel {
 		dugmadi.add(card);
 		add(card);
 		kartaDugme.put(karta, card);
+		frame.blokiraj();
 	}
 	
 	public void skiniKartu(Karta karta){
@@ -123,5 +128,18 @@ public class JTalonPanel extends JPanel {
 			
 		}
 	}
-
+	
+	public void odigraoJe(Karta bacena, List<Karta> nositi){
+		for (Karta karta: nositi){
+			JButton dugme = kartaDugme.get(karta);
+			dugme.setBackground(Color.gray);
+		}
+		top.okreniKartu(bacena);
+		
+		
+		for (Karta karta: nositi){
+			skiniKartu(karta);
+		}
+		frame.odblokiraj();
+	}
 }

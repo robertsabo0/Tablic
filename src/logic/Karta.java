@@ -47,6 +47,7 @@ public class Karta implements Cloneable, Serializable{
 					break;
 				case "Q":
 					simbol="13";
+					break;
 				case "K":
 					simbol="14";
 				}

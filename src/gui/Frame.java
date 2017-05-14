@@ -4,6 +4,7 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.EventQueue;
+import java.awt.PopupMenu;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -53,7 +54,7 @@ public class Frame extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(new BorderLayout(0, 0));
 		
-		JPanel north = new topPanel();
+		topPanel north = new topPanel();
 		north.setBackground(Color.BLUE);
 		contentPane.add(north, BorderLayout.NORTH);
 		
@@ -86,12 +87,21 @@ public class Frame extends JFrame {
 		JPanel glavniSpil = new JGlavniSpilPanel();
 		centralni.add(glavniSpil, BorderLayout.EAST);
 		
-		JTalonPanel talon = new JTalonPanel();
+		JTalonPanel talon = new JTalonPanel(north,this);
 		centralni.add(talon, BorderLayout.CENTER);
 		
 		JPanel south = new BottonPanel(talon);
 		south.setBackground(Color.BLUE);
 		contentPane.add(south, BorderLayout.SOUTH);
+		blokiraj();
 	}
-
+	
+	public void blokiraj(){
+		PopupMenu poruka = new PopupMenu("Čeka se drugi igrač");
+		getGlassPane().add(poruka);
+	}
+	
+	public void odblokiraj (){
+		
+	}
 }
