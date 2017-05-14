@@ -122,7 +122,7 @@ public class ManagerIgre {
 	}
 	
 	public static void odigraoSam(Karta bacena, List<Karta> nos) throws NeMozeSeNositiException{
-		if(!mozeNositi(bacena, nos))
+		if(!Karta.mozeNositi(bacena, nos))
 			throw new NeMozeSeNositiException(bacena, nos);
 
 		if(DEBUG) System.out.println("Noseno sa "+bacena+" : "+nos);
@@ -175,16 +175,6 @@ public class ManagerIgre {
 			return tabla.isEmpty();
 	}
 
-
-	private static boolean mozeNositi(Karta bacena, List<Karta> nositi) {
-		if(nositi.isEmpty())
-			return true;
-		//Robii.TODO
-		// implementirati logiku nosenja
-		return true;
-	}
-	
-
 	private static void checkResult(){
 		
 		if(DEBUG) System.out.println("Checking rezultat");
@@ -212,4 +202,5 @@ public class ManagerIgre {
 		if(DEBUG) System.out.println("Igra je zavrsena");
 		return igrac.getUkupnoPoeni() > 100 || igrac.getUkupnoPoeniProtivnika() > 100;
 	}
+	
 }

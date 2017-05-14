@@ -1,6 +1,9 @@
 package logic;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.List;
 
 public class Karta implements Cloneable, Serializable{
 	
@@ -26,7 +29,7 @@ public class Karta implements Cloneable, Serializable{
 	
 	int nosiPoena() {
 		int vr = 0;
-		if(vrednost.getVr() >= 10) vr = 1;
+		if(vrednost.getVrednost() >= 10) vr = 1;
 		if(vrednost.equals(Vrednost.DESET) && znak.equals(Znak.KARO))
 			vr = 2;
 		if(vrednost.equals(Vrednost.DVA) && znak.equals(Znak.TREF))
@@ -67,5 +70,49 @@ public class Karta implements Cloneable, Serializable{
 		return new Karta(znak, vrednost);
 	}
 	
+
+	static boolean mozeNositi(Karta bacena, List<Karta> nositi) {
+		if(nositi.isEmpty())
+			return true;
+		nositi.add(0, bacena);
+		
+		List<VrednostInterface> allVrednosti = new ArrayList<>();
+		nositi.forEach(t -> allVrednosti.add(t.getVrednost()));
+		
+		return mozeNositi(allVrednosti.toArray(new VrednostInterface[allVrednosti.size()]));
+	}
 	
+	private static boolean mozeNositi(VrednostInterface[] list) {
+		boolean ret = false;
+		for(int i = 0 ; i<list.length && !ret; i++){
+			if(list[i].equals(Vrednost.A)){
+				list[i] = VrednostProsireno.JEDAN;
+				boolean rez = mozeNositi(list);
+				list[i] = VrednostProsireno.JEDANAEST;
+				ret = rez || mozeNositi(list);
+				list[i] = Vrednost.A;
+				return ret;
+			}
+		}
+		return mozeNositiNoA(list);
+	}
+	
+	private static boolean mozeNositiNoA(VrednostInterface[] list) {
+		boolean ret = false;
+		VrednostInterface nosac = list[0];
+		for()
+		return false;
+	}
+	
+	public static void main(String[] args) {
+		Karta a1 = new Karta(Znak.HERC, Vrednost.A);
+		
+		List<Karta> k = new LinkedList<>();
+		k.add(new Karta(Znak.HERC, Vrednost.A));
+		k.add( new Karta(Znak.HERC, Vrednost.CETIRI));
+		k.add( new Karta(Znak.HERC, Vrednost.A));
+		k.add(new Karta(Znak.HERC, Vrednost.CETIRI));
+		
+		mozeNositi(a1, k);
+	}
 }
