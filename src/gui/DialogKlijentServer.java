@@ -15,6 +15,9 @@ import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
+
+import logic.ManagerIgre;
+
 import java.awt.FlowLayout;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
@@ -124,6 +127,10 @@ public class DialogKlijentServer extends JDialog {
 					btnIgra.setEnabled(false);
 					btnIgra.addActionListener(new ActionListener() {
 						public void actionPerformed(ActionEvent e) {
+							ManagerIgre.igrac().setIme(textImeIgraca.getText());
+							
+							Frame igra = new Frame ();
+							igra.setVisible(true);
 						}
 					});
 					if (rdbnKlijent.isSelected()){

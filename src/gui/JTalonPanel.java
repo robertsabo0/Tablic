@@ -68,6 +68,7 @@ public class JTalonPanel extends JPanel {
 	
 	public void skiniKartu(Karta karta){
 		JButton card = kartaDugme.get(karta);
+		card.setVisible(false);
 		dugmadi.remove(card);
 		remove(card);
 		kartaDugme.remove(karta);

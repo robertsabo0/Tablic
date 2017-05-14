@@ -1,6 +1,5 @@
 package gui;
 
-import javax.security.auth.Refreshable;
 import javax.swing.JPanel;
 
 public class JCentralniPanel extends JPanel {

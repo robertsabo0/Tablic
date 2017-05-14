@@ -3,8 +3,6 @@ package gui;
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.Dimension;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.List;
@@ -50,6 +48,8 @@ public class BottonPanel extends JPanel {
 				public void mouseClicked(MouseEvent arg0) {
 					dugme.setVisible(false);
 					horizontalGlue_4.setVisible(false);
+					remove(dugme);
+					remove(horizontalGlue_4);
 					if (talon.oznaceneNaTalonu().size()==0)
 						talon.postaviKartu(k);
 					else
