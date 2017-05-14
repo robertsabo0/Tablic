@@ -64,6 +64,7 @@ public class Frame extends JFrame {
 		JScrollPane sp=new JScrollPane(table);
 		sp.setMaximumSize(new Dimension(175, 400));
 		sp.setPreferredSize(new Dimension(210, 400));
+		
 		int columSize=table.getColumnModel().getColumn(0).getPreferredWidth();
 		table.getColumnModel().getColumn(0).setPreferredWidth(columSize/2+4);
 		table.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);

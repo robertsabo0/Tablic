@@ -31,9 +31,9 @@ public class JTalonPanel extends JPanel {
 	 * Create the panel.
 	 */
 	public JTalonPanel() {
+		setBackground(Color.blue);
 		setPreferredSize(new Dimension(200, 100));
 		setMaximumSize(new Dimension(100, 250));
-		setBackground(Color.blue);
 		layout= new GridLayout(2, 2, 20, 20);
 		setLayout(layout);
 		ManagerIgre.zapocniIgru(null);
@@ -52,12 +52,11 @@ public class JTalonPanel extends JPanel {
 		card.setVisible(true);
 		card.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				//br1++;
-				//if(br1%2==1){
+				if(card.getBackground().equals(Color.blue)){
 					card.setBackground(Color.gray);
-				//}else{
-					//card.setBackground(Color.blue);
-				//}
+				}else{
+					card.setBackground(Color.blue);
+				}
 				
 				
 			}
@@ -83,14 +82,11 @@ public class JTalonPanel extends JPanel {
 			dugme.setBackground(Color.blue);
 			dugme.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent arg0) {
-					//br1++;
-					//if(br1%2==1){
+					if(dugme.getBackground().equals(Color.blue)){
 						dugme.setBackground(Color.gray);
-					//}else{
-						//dugme.setBackground(Color.blue);
-					//}
-					
-					
+					}else{
+						dugme.setBackground(Color.blue);
+					}
 				}
 			});
 			dugmadi.add(dugme);
