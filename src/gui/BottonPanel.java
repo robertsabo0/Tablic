@@ -28,7 +28,7 @@ public class BottonPanel extends JPanel {
 	 */
 	
 	public BottonPanel(JTalonPanel talon) {
-		ManagerIgre.zapocniIgru(null);
+		//ManagerIgre.zapocniIgru(null);
 		BottonPanel.talon=talon;
 		setPreferredSize(new Dimension(0, 125));
 		List<Karta> ruka = ManagerIgre.igrac().getURuci();

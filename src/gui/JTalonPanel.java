@@ -33,7 +33,7 @@ public class JTalonPanel extends JPanel {
 	 * Create the panel.
 	 */
 	public JTalonPanel(TopPanel top, Frame frame) {
-		ManagerIgre.zapocniIgru(null);
+		//ManagerIgre.zapocniIgru(null);
 		this.frame = frame;
 		this.top=top;
 		setBackground(Color.blue);

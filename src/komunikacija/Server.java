@@ -22,6 +22,7 @@ public class Server extends KarteImplementacija implements ServerInterfejs{
 		klijent=kl;
 		
 		// TODO spil
+		klijent.setImeIgraca2(ManagerIgre.igrac().getIme());
 		ManagerIgre.zapocniIgru(klijent);
 	}
 

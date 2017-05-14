@@ -13,7 +13,6 @@ public class MenagerKomunikacije {
 	
 	public void kreirajKonekciju(String imeIgraca1){
 		try{
-			imeIgraca1=DialogKlijentServer.textImeIgraca.getText();
 			Server server=new Server();
 			me = server;
 			Registry reg=LocateRegistry.createRegistry(1099);
@@ -25,13 +24,13 @@ public class MenagerKomunikacije {
 	
 	public void konektujSe(String ip, String imeIgraca2) throws NeuspesnaKonekcijaException, NotBoundException{
 		try{
-			imeIgraca2=DialogKlijentServer.textImeIgraca.getText();
 			Registry reg=LocateRegistry.getRegistry(ip, 1099);
 			ServerInterfejs server=(ServerInterfejs) reg.lookup("server");
 			System.out.println("Konektovan");
-			server.setImeIgraca2(imeIgraca2);
+			ManagerIgre.igrac().setIme(imeIgraca2);
 			Klijent klijent=new Klijent(server);
 			me = klijent;
+			server.setImeIgraca2(imeIgraca2);
 		} catch (RemoteException e){
 			throw new NeuspesnaKonekcijaException();
 		}

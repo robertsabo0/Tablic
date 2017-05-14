@@ -16,11 +16,14 @@ import javax.swing.JRadioButton;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 
+import komunikacija.MenagerKomunikacije;
+import komunikacija.NeuspesnaKonekcijaException;
 import logic.ManagerIgre;
 
 import java.awt.FlowLayout;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.rmi.NotBoundException;
 
 public class DialogKlijentServer extends JDialog {
 
@@ -128,9 +131,22 @@ public class DialogKlijentServer extends JDialog {
 					btnIgra.addActionListener(new ActionListener() {
 						public void actionPerformed(ActionEvent e) {
 							ManagerIgre.igrac().setIme(textImeIgraca.getText());
-							
+							MenagerKomunikacije menadzer = new MenagerKomunikacije();
 							Frame igra = new Frame ();
 							igra.setVisible(true);
+							if(rdbnKlijent.isSelected()){
+								try {
+									menadzer.konektujSe(textAdresaServera.getText(), textImeIgraca.getText());
+								} catch (NeuspesnaKonekcijaException e1) {
+									// TODO Auto-generated catch block
+									e1.printStackTrace();
+								} catch (NotBoundException e1) {
+									// TODO Auto-generated catch block
+									e1.printStackTrace();
+								}
+							}else{
+								menadzer.kreirajKonekciju(textImeIgraca.getText());
+							}
 						}
 					});
 					if (rdbnKlijent.isSelected()){

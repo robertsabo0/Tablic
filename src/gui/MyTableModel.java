@@ -60,10 +60,10 @@ public class MyTableModel extends AbstractTableModel {
 				return arg0+1;
 		}
 		if(arg1==1){
-			return i.getPoeniTrenutnePartije();
+			return 0;
 		}
 		if(arg1==2){
-			return i.getPoeniProtivnikaTrenutnePartije();
+			return 0;
 		}
 		return null;
 	}
