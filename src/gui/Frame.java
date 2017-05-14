@@ -53,7 +53,7 @@ public class Frame extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(new BorderLayout(0, 0));
 		
-		JPanel north = new topPanel();
+		TopPanel north = new TopPanel();
 		north.setBackground(Color.BLUE);
 		contentPane.add(north, BorderLayout.NORTH);
 		
@@ -86,7 +86,7 @@ public class Frame extends JFrame {
 		JPanel glavniSpil = new JGlavniSpilPanel();
 		centralni.add(glavniSpil, BorderLayout.EAST);
 		
-		JTalonPanel talon = new JTalonPanel();
+		JTalonPanel talon = new JTalonPanel(north, this);
 		centralni.add(talon, BorderLayout.CENTER);
 		
 		JPanel south = new BottonPanel(talon);
@@ -94,5 +94,12 @@ public class Frame extends JFrame {
 		contentPane.add(south, BorderLayout.SOUTH);
 		this.pack();
 	}
-
+	
+	public void blokiraj (){
+		
+	}
+	
+	public void odblokiraj (){
+	
+	}
 }

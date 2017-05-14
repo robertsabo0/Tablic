@@ -13,7 +13,7 @@ import javax.swing.JPanel;
 
 import logic.Karta;
 
-public class topPanel extends JPanel {
+public class TopPanel extends JPanel {
 
 	/**
 	 * 
@@ -26,7 +26,7 @@ public class topPanel extends JPanel {
 	List<JLabel> protivnikoveKarte = new ArrayList<>();
 	
 	static JButton prvaKarta,drugaKarta,trecaKarta,cetvrtaKarta,petaKarta,sestaKarta;
-	public topPanel() {
+	public TopPanel() {
 		setLayout(new BoxLayout(this, BoxLayout.X_AXIS));
 		
 		

@@ -27,12 +27,12 @@ public class JTalonPanel extends JPanel {
 	private GridLayout layout;
 	private static  List<JButton> dugmadi= new ArrayList<>();
 	private static Map <Karta,JButton> kartaDugme= new HashMap<>();
-	private topPanel top;
+	private TopPanel top;
 	private Frame frame;
 	/**
 	 * Create the panel.
 	 */
-	public JTalonPanel(topPanel top, Frame frame) {
+	public JTalonPanel(TopPanel top, Frame frame) {
 		ManagerIgre.zapocniIgru(null);
 		this.frame = frame;
 		this.top=top;
