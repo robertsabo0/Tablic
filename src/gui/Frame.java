@@ -92,6 +92,7 @@ public class Frame extends JFrame {
 		JPanel south = new BottonPanel(talon);
 		south.setBackground(Color.BLUE);
 		contentPane.add(south, BorderLayout.SOUTH);
+		this.pack();
 	}
 
 }

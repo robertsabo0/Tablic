@@ -13,7 +13,7 @@ public class TesticServer {
 	 * @throws Exception
 	 */
 	public static void main(String... args) throws Exception{
-		ManagerIgre.menagerKomunikacije().kreirajKonekciju();
+		ManagerIgre.menagerKomunikacije().kreirajKonekciju("Igrac1");
 		
 		SpilTest.playTest();
 		
