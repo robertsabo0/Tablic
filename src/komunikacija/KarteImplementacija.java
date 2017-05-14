@@ -51,5 +51,9 @@ public abstract class KarteImplementacija  extends UnicastRemoteObject  implemen
 		// unblock //
 		
 	}
+	public void setImeIgraca2(String imeIgraca2) throws RemoteException{
+		drugi.setImeIgraca2(imeIgraca2);
+		
+	}
 
 }

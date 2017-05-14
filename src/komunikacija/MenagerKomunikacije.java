@@ -25,9 +25,9 @@ public class MenagerKomunikacije {
 			Registry reg=LocateRegistry.getRegistry(ip, 1099);
 			ServerInterfejs server=(ServerInterfejs) reg.lookup("server");
 			System.out.println("Konektovan");
+			server.setImeIgraca2(imeIgraca2);
 			Klijent klijent=new Klijent(server);
 			me = klijent;
-			ManagerIgre.igrac().setIme(imeIgraca2);
 		} catch (RemoteException e){
 			throw new NeuspesnaKonekcijaException();
 		}

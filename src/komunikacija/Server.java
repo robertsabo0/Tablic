@@ -26,4 +26,10 @@ public class Server extends KarteImplementacija implements ServerInterfejs{
 		// posalji spil
 	}
 
+//	@Override
+//	public void setImeIgraca2(String imeIgraca2) throws RemoteException {
+//		// TODO Auto-generated method stub
+//		
+//	}
+
 }
