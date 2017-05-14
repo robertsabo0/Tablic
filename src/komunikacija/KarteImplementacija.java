@@ -33,10 +33,10 @@ public abstract class KarteImplementacija  extends UnicastRemoteObject  implemen
 		}catch (Exception e){}
 		
 	}
-	protected void blokirajSe(){
+	public void blokirajSe(){
 		blokiran = true;
 	}
-	protected void odBlokirajSe(){
+	public void odBlokirajSe(){
 		blokiran = false;
 	}
 	

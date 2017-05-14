@@ -33,7 +33,7 @@ public class DialogKlijentServer extends JDialog {
 	JRadioButton rdbnServer;
 	ButtonGroup klijentServer;
 	JButton btnIgra;
-	private JTextField textImeIgraca;
+	public static JTextField textImeIgraca;
 	private JTextField textAdresaServera;
 	JPanel klijentPanel;
 

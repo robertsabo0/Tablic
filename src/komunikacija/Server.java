@@ -1,5 +1,5 @@
 package komunikacija;
-
+import komunikacija.KarteImplementacija;
 import java.rmi.RemoteException;
 import java.util.LinkedList;
 
@@ -23,7 +23,6 @@ public class Server extends KarteImplementacija implements ServerInterfejs{
 		
 		// TODO spil
 		ManagerIgre.zapocniIgru(klijent);
-		// posalji spil
 	}
 
 //	@Override
