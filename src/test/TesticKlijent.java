@@ -12,10 +12,10 @@ public class TesticKlijent {
 	 * @param args
 	 * @throws Exception
 	 */
-	private static final String host = "LOCALHOST";
+	private static final String host = "192.168.1.111";
 	
 	public static void main(String... args) throws Exception{
-		ManagerIgre.menagerKomunikacije().konektujSe(host);
+		ManagerIgre.menagerKomunikacije().konektujSe(host, "Igrac2");
 		SpilTest.playTest();
 	}
 }

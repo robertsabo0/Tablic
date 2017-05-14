@@ -33,10 +33,10 @@ public abstract class KarteImplementacija  extends UnicastRemoteObject  implemen
 		}catch (Exception e){}
 		
 	}
-	protected void blokirajSe(){
+	public void blokirajSe(){
 		blokiran = true;
 	}
-	protected void odBlokirajSe(){
+	public void odBlokirajSe(){
 		blokiran = false;
 	}
 	
@@ -49,6 +49,10 @@ public abstract class KarteImplementacija  extends UnicastRemoteObject  implemen
 		// realno:
 		// poziva iz logike ...
 		// unblock //
+		
+	}
+	public void setImeIgraca2(String imeIgraca2) throws RemoteException{
+		drugi.setImeIgraca2(imeIgraca2);
 		
 	}
 

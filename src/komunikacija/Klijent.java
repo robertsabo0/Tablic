@@ -28,5 +28,10 @@ public class Klijent extends KarteImplementacija implements KlijentInterfejs{
 	public void posaljiSpil(Spil s, boolean b) throws RemoteException {
 		ManagerIgre.zapocniIgru(s, b);
 	}
+//	@Override
+//	public void setImeIgraca2(String imeIgraca2) throws RemoteException {
+//		server.setImeIgraca2(imeIgraca2);
+//		
+//	}
 
 }

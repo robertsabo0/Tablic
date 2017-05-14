@@ -18,6 +18,7 @@ public class ManagerIgre {
 	//RoiiTODO : private !
 	private static Igrac igrac;
 	
+	private String drugiIgracIme;
 	private static boolean igramPrvi;
 	private static boolean poslednjiNosio;
 	
@@ -75,7 +76,9 @@ public class ManagerIgre {
 		
 	}
 	
-	
+	public String getImeIgraca2(){
+		return drugiIgracIme;
+	}
 	public static void zapocniIgru(Spil s, boolean pf){
 
 		if(DEBUG) System.out.println("Dobio sam spil... Igram prvi: "+pf);

@@ -8,12 +8,12 @@ import java.rmi.server.RemoteServer;
 import java.rmi.server.ServerNotActiveException;
 
 public class KonektujSeTest {
-	public static void main(String[] args) throws RemoteException, NotBoundException, NeuspesnaKonekcija, ServerNotActiveException, java.net.UnknownHostException {
+	public static void main(String[] args) throws RemoteException, NotBoundException, NeuspesnaKonekcijaException, ServerNotActiveException, java.net.UnknownHostException {
 		MenagerKomunikacije menager=new MenagerKomunikacije();
 		
 		InetAddress addr = InetAddress.getLocalHost();
 		byte[] ipAddr = addr.getAddress();
 		String hostname = addr.getHostName();
-		menager.konektujSe(hostname);
+		menager.konektujSe(hostname, "Igrac2");
 	}
 }
