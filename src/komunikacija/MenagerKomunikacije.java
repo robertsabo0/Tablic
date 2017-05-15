@@ -1,10 +1,11 @@
 package komunikacija;
+import logic.Karta;
+import logic.ManagerIgre;
 import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
-
-import logic.ManagerIgre;
+import java.util.List;
 
 public class MenagerKomunikacije {
 	
@@ -18,7 +19,9 @@ public class MenagerKomunikacije {
 			reg.rebind("server", server);
 			ManagerIgre.igrac().setIme(imeIgraca1);
 			System.out.println("Konekcija spremna");
-		} catch (Exception e){}
+		} catch (Exception e){
+			e.printStackTrace();
+		}
 	}
 	
 	public void konektujSe(String ip, String imeIgraca2) throws NeuspesnaKonekcijaException, NotBoundException{
@@ -29,15 +32,14 @@ public class MenagerKomunikacije {
 			ManagerIgre.igrac().setIme(imeIgraca2);
 			Klijent klijent=new Klijent(server);
 			me = klijent;
-			server.setImeIgraca2(imeIgraca2);
+			//server.setImeIgraca2(imeIgraca2);
 		} catch (RemoteException e){
 			throw new NeuspesnaKonekcijaException();
 		}
 	}
 	
-	public void odigraoSam(){
-		me.odigraoSam();
+	public void odigraoSam(Karta k, List<Karta> l){
+		me.odigraoSam(k,l);
 	}
-	
 	
 }

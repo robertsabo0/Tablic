@@ -168,7 +168,7 @@ public class DialogKlijentServer extends JDialog {
 					klijentPanel.add(lblAdresaServera);
 				}
 				{
-					textAdresaServera = new JTextField();
+					textAdresaServera = new JTextField("localhost");
 					textAdresaServera.addMouseListener(new MouseAdapter() {
 						@Override
 						public void mouseClicked(MouseEvent arg0) {
