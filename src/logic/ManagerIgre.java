@@ -18,7 +18,15 @@ public class ManagerIgre {
 	//RoiiTODO : private !
 	private static Igrac igrac;
 	
-	private static  String drugiIgracIme;
+
+	private static String drugiIgracIme;
+	public static String getDrugiIgracIme() {
+		return drugiIgracIme;
+	}
+	public static void setDrugiIgracIme(String drugiIgracIme) {
+		ManagerIgre.drugiIgracIme = drugiIgracIme;
+	}
+
 	private static boolean igramPrvi;
 	private static boolean poslednjiNosio;
 	
@@ -214,7 +222,7 @@ public class ManagerIgre {
 		}
 	}
 	
-	private static boolean krajIgre(){
+	public static boolean krajIgre(){
 		if(DEBUG) System.out.println("Igra je zavrsena");
 		return igrac.getUkupnoPoeni() > 100 || igrac.getUkupnoPoeniProtivnika() > 100;
 	}

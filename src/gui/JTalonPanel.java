@@ -19,50 +19,50 @@ import logic.ManagerIgre;
 import logic.NeMozeSeNositiException;
 
 public class JTalonPanel extends JPanel {
-	
+
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = -8691133858454493253L;
 	private GridLayout layout;
-	private static  List<JButton> dugmadi= new ArrayList<>();
-	private static Map <Karta,JButton> kartaDugme= new HashMap<>();
+	private static List<JButton> dugmadi = new ArrayList<>();
+	private static Map<Karta, JButton> kartaDugme = new HashMap<>();
 	private TopPanel top;
 	private Frame frame;
+
 	/**
 	 * Create the panel.
 	 */
 	public JTalonPanel(TopPanel top, Frame frame) {
-		//ManagerIgre.zapocniIgru(null);
+		// ManagerIgre.zapocniIgru(null);
 		this.frame = frame;
-		this.top=top;
+		this.top = top;
 		setBackground(Color.blue);
 		setPreferredSize(new Dimension(200, 100));
 		setMaximumSize(new Dimension(100, 250));
-		layout= new GridLayout(2, 2, 20, 20);
+		layout = new GridLayout(2, 2, 20, 20);
 		setLayout(layout);
 		getTalonDugmadi(ManagerIgre.tabla());
-		for(int i=0;i<dugmadi.size();i++){
+		for (int i = 0; i < dugmadi.size(); i++) {
 			add(dugmadi.get(i));
 		}
 	}
-	
-	public void postaviKartu(Karta karta){
-		String slika= karta.getSlika();
-		ImageIcon image1=new ImageIcon(slika);
-		JButton card= new JButton(image1);
-		
+
+	public void postaviKartu(Karta karta) {
+		String slika = karta.getSlika();
+		ImageIcon image1 = new ImageIcon(slika);
+		JButton card = new JButton(image1);
+
 		card.setBackground(Color.blue);
 		card.setVisible(true);
 		card.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				if(card.getBackground().equals(Color.blue)){
+				if (card.getBackground().equals(Color.blue)) {
 					card.setBackground(Color.gray);
-				}else{
+				} else {
 					card.setBackground(Color.blue);
 				}
-				
-				
+
 			}
 		});
 		dugmadi.add(card);
@@ -70,27 +70,27 @@ public class JTalonPanel extends JPanel {
 		kartaDugme.put(karta, card);
 		frame.blokiraj();
 	}
-	
-	public void skiniKartu(Karta karta){
+
+	public void skiniKartu(Karta karta) {
 		JButton card = kartaDugme.get(karta);
 		card.setVisible(false);
 		dugmadi.remove(card);
 		remove(card);
 		kartaDugme.remove(karta);
-		
+
 	}
-	
-	public static void getTalonDugmadi(List<Karta> talon){
-		for(Karta k:talon){
-			String slika= k.getSlika();
-			ImageIcon image1=new ImageIcon(slika);
-			JButton dugme= new JButton(image1);
+
+	public static void getTalonDugmadi(List<Karta> talon) {
+		for (Karta k : talon) {
+			String slika = k.getSlika();
+			ImageIcon image1 = new ImageIcon(slika);
+			JButton dugme = new JButton(image1);
 			dugme.setBackground(Color.blue);
 			dugme.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent arg0) {
-					if(dugme.getBackground().equals(Color.blue)){
+					if (dugme.getBackground().equals(Color.blue)) {
 						dugme.setBackground(Color.gray);
-					}else{
+					} else {
 						dugme.setBackground(Color.blue);
 					}
 				}
@@ -99,12 +99,13 @@ public class JTalonPanel extends JPanel {
 			kartaDugme.put(k, dugme);
 		}
 	}
-	public List<Karta> oznaceneNaTalonu(){
-		List<Karta> oznacene=new ArrayList<>();
-		for(JButton d:dugmadi){
-			if(d.getBackground().equals(Color.gray)){
+
+	public List<Karta> oznaceneNaTalonu() {
+		List<Karta> oznacene = new ArrayList<>();
+		for (JButton d : dugmadi) {
+			if (d.getBackground().equals(Color.gray)) {
 				for (Map.Entry<Karta, JButton> entry : kartaDugme.entrySet()) {
-					if(entry.getValue().equals(d)){
+					if (entry.getValue().equals(d)) {
 						oznacene.add(entry.getKey());
 					}
 				}
@@ -112,34 +113,39 @@ public class JTalonPanel extends JPanel {
 		}
 		return oznacene;
 	}
-	public void nosi(Karta k){
-			nosi(k, oznaceneNaTalonu());
+
+	public void nosi(Karta k) {
+		nosi(k, oznaceneNaTalonu());
 	}
-	
-	public void nosi(Karta k, List<Karta> oznacene){
+
+	public void nosi(Karta k, List<Karta> oznacene) {
 		try {
-			ManagerIgre.odigraoSam(k,oznacene);
+			ManagerIgre.odigraoSam(k, oznacene);
 		} catch (NeMozeSeNositiException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		for(Karta o:oznacene){
+		for (Karta o : oznacene) {
 			skiniKartu(o);
-			
+
 		}
 	}
-	
-	public void odigraoJe(Karta bacena, List<Karta> nositi){
-		for (Karta karta: nositi){
-			JButton dugme = kartaDugme.get(karta);
-			dugme.setBackground(Color.gray);
+
+	public void odigraoJe(Karta bacena, List<Karta> nositi) {
+		if (nositi != null) {
+			for (Karta karta : nositi) {
+				JButton dugme = kartaDugme.get(karta);
+				dugme.setBackground(Color.gray);
+			}
+			top.okreniKartu(bacena);
+
+			for (Karta karta : nositi) {
+				skiniKartu(karta);
+			}
+		}else{
+			postaviKartu(bacena);
 		}
-		top.okreniKartu(bacena);
 		
-		
-		for (Karta karta: nositi){
-			skiniKartu(karta);
-		}
 		frame.odblokiraj();
 	}
 }

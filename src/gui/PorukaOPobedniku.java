@@ -2,14 +2,14 @@ package gui;
 
 import java.awt.BorderLayout;
 import java.awt.FlowLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 import javax.swing.JDialog;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
-import javax.swing.JLabel;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
 
 public class PorukaOPobedniku extends JDialog {
 
@@ -22,20 +22,12 @@ public class PorukaOPobedniku extends JDialog {
 	/**
 	 * Launch the application.
 	 */
-	public static void main(String[] args) {
-		try {
-			PorukaOPobedniku dialog = new PorukaOPobedniku();
-			dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
-			dialog.setVisible(true);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-	}
 
 	/**
 	 * Create the dialog.
 	 */
-	public PorukaOPobedniku() {
+	public PorukaOPobedniku(String ime) {
+		
 		setBounds(100, 100, 450, 300);
 		getContentPane().setLayout(new BorderLayout());
 		contentPanel.setLayout(new FlowLayout());
@@ -44,6 +36,10 @@ public class PorukaOPobedniku extends JDialog {
 		{
 			JLabel lblPobednikJe = new JLabel("Pobednik je: ");
 			contentPanel.add(lblPobednikJe);
+		}
+		{
+			JLabel lblNewLabel = new JLabel(ime);
+			contentPanel.add(lblNewLabel);
 		}
 		{
 			JLabel label = new JLabel("");

@@ -7,8 +7,6 @@ import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
 import java.util.List;
 
-import gui.DialogKlijentServer;
-
 public class MenagerKomunikacije {
 	
 	public static KarteImplementacija me;

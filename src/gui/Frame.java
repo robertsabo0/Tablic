@@ -4,13 +4,19 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.EventQueue;
+import java.awt.Graphics;
+import java.awt.event.ComponentAdapter;
+import java.awt.event.ComponentEvent;
+import java.awt.event.KeyAdapter;
 
+import javax.swing.JComponent;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.border.EmptyBorder;
+import javax.swing.event.MouseInputAdapter;
 import javax.swing.table.DefaultTableCellRenderer;
 
 import logic.ManagerIgre;
@@ -52,7 +58,16 @@ public class Frame extends JFrame {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(new BorderLayout(0, 0));
-		
+		if(ManagerIgre.krajIgre()){
+			if(ManagerIgre.igrac().getUkupnoPoeni()>100){
+				PorukaOPobedniku p=new PorukaOPobedniku(ManagerIgre.igrac().getIme());
+				p.setVisible(true);
+			}else{
+				PorukaOPobedniku p=new PorukaOPobedniku(ManagerIgre.getDrugiIgracIme());
+				p.setVisible(true);
+			}
+			
+		}
 		TopPanel north = new TopPanel();
 		north.setBackground(Color.BLUE);
 		contentPane.add(north, BorderLayout.NORTH);
@@ -93,13 +108,25 @@ public class Frame extends JFrame {
 		south.setBackground(Color.BLUE);
 		contentPane.add(south, BorderLayout.SOUTH);
 		this.pack();
+		blokiraj();
+		try {
+			Thread.sleep(3000);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		odblokiraj();
 	}
-	
+	MyGlassPane my=new MyGlassPane();
 	public void blokiraj (){
 		
+		setGlassPane(my);
+		my.activate();
+		getGlassPane().setVisible(true);
 	}
 	
 	public void odblokiraj (){
-	
+		my.deactivate();
+		getGlassPane().setVisible(false);
 	}
 }
