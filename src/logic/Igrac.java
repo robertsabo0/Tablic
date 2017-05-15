@@ -5,7 +5,7 @@ import java.util.List;
 
 public class Igrac {
 
-	private String ime;
+	private static String ime;
 	private List<Karta> ruka;
 	private List<Karta> noseno;
 	
@@ -84,11 +84,12 @@ public class Igrac {
 		return poeniProtivnika;
 	}
 
-	public String getIme() {
+	public static String getIme() {
 		return ime;
 	}
 
 	public void setIme(String ime) {
+		System.out.println("Ime je "+ime);
 		this.ime = ime;
 	}
 	

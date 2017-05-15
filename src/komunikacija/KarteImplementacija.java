@@ -4,6 +4,7 @@ import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
 import java.util.List;
 
+import logic.Igrac;
 import logic.Karta;
 import logic.ManagerIgre;
 
@@ -53,12 +54,17 @@ public abstract class KarteImplementacija  extends UnicastRemoteObject  implemen
 		ManagerIgre.odigraoJe(k, l);
 		
 	}
-	public void setImeIgraca2(String imeIgraca2) throws RemoteException{
-		drugi.setImeIgraca2(imeIgraca2);
-	}
-	
 	public boolean amIServer(){
 		return amIServer;
+	}
+	
+	@Override
+	public void setImeIgraca(String imeIgraca){
+		ManagerIgre.setImeIgraca2(imeIgraca);
+	}
+	@Override
+	public void posaljiImeIgraca(String imeIgraca) throws RemoteException{
+		drugi.setImeIgraca(imeIgraca);
 	}
 
 }

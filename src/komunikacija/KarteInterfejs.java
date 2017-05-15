@@ -10,6 +10,7 @@ public interface KarteInterfejs extends Remote{
 	
 	public void stampaj() throws RemoteException;
 	public void odigraoJe(Karta k, List<Karta> l) throws RemoteException;
-	public void setImeIgraca2(String imeIgraca2) throws RemoteException;
 	public boolean amIServer() throws RemoteException;
+	public void setImeIgraca(String imeIgraca) throws RemoteException;
+	public void posaljiImeIgraca(String imeIgraca) throws RemoteException;
 }

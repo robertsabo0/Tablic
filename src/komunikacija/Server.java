@@ -26,9 +26,14 @@ public class Server extends KarteImplementacija implements ServerInterfejs{
 		// TODO spil
 		//klijent.setImeIgraca2(ManagerIgre.igrac().getIme()); Stefan.TODO
 		ManagerIgre.zapocniIgru(klijent);
-		Frame.main(new String[0]);
-	}
 
+		Frame.main(new String[0]);
+
+		
+		MenagerKomunikacije.me.posaljiImeIgraca(ManagerIgre.igrac().getIme());
+		
+
+	}
 //	@Override
 //	public void setImeIgraca2(String imeIgraca2) throws RemoteException {
 //		// TODO Auto-generated method stub

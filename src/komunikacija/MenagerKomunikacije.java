@@ -9,7 +9,7 @@ import java.util.List;
 
 public class MenagerKomunikacije {
 	
-	public KarteImplementacija me;
+	public static KarteImplementacija me;
 	
 	public void kreirajKonekciju(String imeIgraca1){
 		try{
@@ -29,10 +29,10 @@ public class MenagerKomunikacije {
 			Registry reg=LocateRegistry.getRegistry(ip, 1099);
 			ServerInterfejs server=(ServerInterfejs) reg.lookup("server");
 			System.out.println("Konektovan");
-			ManagerIgre.igrac().setIme(imeIgraca2);
 			Klijent klijent=new Klijent(server);
 			me = klijent;
-			//server.setImeIgraca2(imeIgraca2);
+			ManagerIgre.igrac().setIme(imeIgraca2);
+			me.posaljiImeIgraca(imeIgraca2);
 		} catch (RemoteException e){
 			throw new NeuspesnaKonekcijaException();
 		}
