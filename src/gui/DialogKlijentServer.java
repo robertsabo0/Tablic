@@ -2,8 +2,12 @@ package gui;
 
 import java.awt.BorderLayout;
 import java.awt.Component;
+import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.rmi.NotBoundException;
 
 import javax.swing.Box;
 import javax.swing.BoxLayout;
@@ -19,11 +23,6 @@ import javax.swing.border.EmptyBorder;
 import komunikacija.MenagerKomunikacije;
 import komunikacija.NeuspesnaKonekcijaException;
 import logic.ManagerIgre;
-
-import java.awt.FlowLayout;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
-import java.rmi.NotBoundException;
 
 public class DialogKlijentServer extends JDialog {
 
@@ -132,8 +131,9 @@ public class DialogKlijentServer extends JDialog {
 						public void actionPerformed(ActionEvent e) {
 							ManagerIgre.igrac().setIme(textImeIgraca.getText());
 							MenagerKomunikacije menadzer = new MenagerKomunikacije();
-							Frame igra = new Frame ();
-							igra.setVisible(true);
+							//Frame igra = new Frame ();
+							//igra.setVisible(true);
+							//dispose();
 							if(rdbnKlijent.isSelected()){
 								try {
 									menadzer.konektujSe(textAdresaServera.getText(), textImeIgraca.getText());
@@ -146,6 +146,9 @@ public class DialogKlijentServer extends JDialog {
 								}
 							}else{
 								menadzer.kreirajKonekciju(textImeIgraca.getText());
+								MyGlassPane my = new MyGlassPane();
+								setGlassPane(my);
+								getGlassPane().setVisible(true);
 							}
 						}
 					});

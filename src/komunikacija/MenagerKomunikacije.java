@@ -1,11 +1,10 @@
 package komunikacija;
-import logic.ManagerIgre;
 import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
 
-import gui.DialogKlijentServer;
+import logic.ManagerIgre;
 
 public class MenagerKomunikacije {
 	
