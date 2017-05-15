@@ -121,7 +121,7 @@ public class ManagerIgre {
 		if(DEBUG) stampajRuku();
 		
 		if(!igramPrvi){
-			Frame.frame.blokiraj();
+			Frame.blokiran=true;
 		}
 	}
 	public static void odigraoSam(Karta bacena){

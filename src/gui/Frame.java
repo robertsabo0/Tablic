@@ -30,6 +30,7 @@ public class Frame extends JFrame {
 	private JPanel contentPane;
 	private JTable table;
 	public static Frame frame;
+	public static boolean blokiran;
 	/**
 	 * Launch the application.
 	 */
@@ -39,6 +40,9 @@ public class Frame extends JFrame {
 				try {
 					frame = new Frame();
 					frame.setVisible(true);
+					if(blokiran){
+						frame.blokiraj();
+					}
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
