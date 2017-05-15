@@ -137,6 +137,7 @@ public class DialogKlijentServer extends JDialog {
 							if(rdbnKlijent.isSelected()){
 								try {
 									menadzer.konektujSe(textAdresaServera.getText(), textImeIgraca.getText());
+									Frame.main(new String[0]);
 								} catch (NeuspesnaKonekcijaException e1) {
 									// TODO Auto-generated catch block
 									e1.printStackTrace();

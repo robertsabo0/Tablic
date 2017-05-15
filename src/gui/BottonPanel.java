@@ -15,6 +15,7 @@ import javax.swing.JPanel;
 
 import logic.Karta;
 import logic.ManagerIgre;
+import logic.NeMozeSeNositiException;
 
 public class BottonPanel extends JPanel {
 
@@ -50,10 +51,20 @@ public class BottonPanel extends JPanel {
 					horizontalGlue_4.setVisible(false);
 					remove(dugme);
 					remove(horizontalGlue_4);
-					if (talon.oznaceneNaTalonu().size()==0)
+					
+					if (talon.oznaceneNaTalonu().size()==0){
 						talon.postaviKartu(k);
-					else
+						ManagerIgre.odigraoSam(k);
+					}else{
 						talon.nosi(k);
+						try {
+							ManagerIgre.odigraoSam(k, talon.oznaceneNaTalonu());
+						} catch (NeMozeSeNositiException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}
+					}
+						
 				}
 			});
 			add(dugme);

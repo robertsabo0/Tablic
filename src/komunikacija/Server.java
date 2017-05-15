@@ -3,6 +3,7 @@ import komunikacija.KarteImplementacija;
 import java.rmi.RemoteException;
 import java.util.LinkedList;
 
+import gui.Frame;
 import logic.ManagerIgre;
 
 public class Server extends KarteImplementacija implements ServerInterfejs{
@@ -25,6 +26,7 @@ public class Server extends KarteImplementacija implements ServerInterfejs{
 		// TODO spil
 		//klijent.setImeIgraca2(ManagerIgre.igrac().getIme()); Stefan.TODO
 		ManagerIgre.zapocniIgru(klijent);
+		Frame.main(new String[0]);
 	}
 
 //	@Override

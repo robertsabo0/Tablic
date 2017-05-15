@@ -7,6 +7,7 @@ import java.util.List;
 
 import javax.swing.JOptionPane;
 
+import gui.Frame;
 import komunikacija.KlijentInterfejs;
 import komunikacija.MenagerKomunikacije;
 
@@ -117,8 +118,7 @@ public class ManagerIgre {
 		if(DEBUG) stampajRuku();
 		
 		if(!igramPrvi){
-			//Robii.TODO
-			// wait
+			Frame.frame.blokiraj();
 		}
 	}
 	public static void odigraoSam(Karta bacena){
@@ -171,6 +171,7 @@ public class ManagerIgre {
 		
 		if(igrac.getURuci().isEmpty() && igramPrvi)
 			checkResult();
+		Frame.frame.odblokiraj();
 	}
 	
 	private static boolean srediTablu(Karta bacena, List<Karta> nositi) {

@@ -29,7 +29,7 @@ public class Frame extends JFrame {
 	private static final long serialVersionUID = -5239550909572819317L;
 	private JPanel contentPane;
 	private JTable table;
-
+	public static Frame frame;
 	/**
 	 * Launch the application.
 	 */
@@ -37,7 +37,7 @@ public class Frame extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					Frame frame = new Frame();
+					frame = new Frame();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
