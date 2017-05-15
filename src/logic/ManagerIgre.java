@@ -18,7 +18,7 @@ public class ManagerIgre {
 	//RoiiTODO : private !
 	private static Igrac igrac;
 	
-	private String drugiIgracIme;
+	private static  String drugiIgracIme;
 	private static boolean igramPrvi;
 	private static boolean poslednjiNosio;
 	
@@ -69,10 +69,12 @@ public class ManagerIgre {
 				e.printStackTrace();
 			}
 		}
-		
 	}
-	
-	public String getImeIgraca2(){
+	public static void setImeIgraca2(String imeIgraca2){
+		drugiIgracIme=imeIgraca2;
+		System.out.println("Ime 2 je"+drugiIgracIme);
+	}
+	public static String getImeIgraca2(){
 		return drugiIgracIme;
 	}
 	public static void zapocniIgru(Spil s, boolean pf){
