@@ -12,6 +12,8 @@ public class Klijent extends KarteImplementacija implements KlijentInterfejs{
 	protected Klijent(ServerInterfejs a) throws RemoteException {
 		super();
 		super.drugi = (ServerInterfejs)a;// KarteInterfejs
+		super.amIServer = false;
+		
 		server = a;
 
 		server.javiSe(this);

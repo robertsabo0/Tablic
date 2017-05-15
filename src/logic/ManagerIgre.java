@@ -60,18 +60,14 @@ public class ManagerIgre {
 		boolean igramPrvi = igrac.getPoeni().size() % 2 == 0;
 		
 		// test
-		igramPrvi = false;
-		// test
 		zapocniIgru(new Spil(mojSpil), igramPrvi);
 		
 		if(klijent!=null){
-		// Robii.TODO
-		try {
-			klijent.posaljiSpil(new Spil(tudjiSpil), !igramPrvi);
-		} catch (RemoteException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+			try {
+				klijent.posaljiSpil(new Spil(tudjiSpil), !igramPrvi);
+			} catch (RemoteException e) {
+				e.printStackTrace();
+			}
 		}
 		
 	}
@@ -114,6 +110,7 @@ public class ManagerIgre {
 		if(DEBUG) stampajRuku();
 		
 		if(!igramPrvi){
+			//Robii.TODO
 			// wait
 		}
 	}
@@ -145,8 +142,9 @@ public class ManagerIgre {
 			List<Karta> uPoene = new ArrayList<>(nositi);
 			uPoene.add(bacena);
 			igrac.dadajUNosene(uPoene);
-			
 		}
+		
+		menagerKomunikacije.odigraoSam(bacena, nositi);
 
 		if(igrac.getURuci().isEmpty() && !igramPrvi){
 			checkResult();
@@ -164,7 +162,7 @@ public class ManagerIgre {
 		if(!nositi.isEmpty())
 			poslednjiNosio = false;
 		
-		if(igramPrvi)
+		if(igrac.getURuci().isEmpty() && igramPrvi)
 			checkResult();
 	}
 	
@@ -190,11 +188,13 @@ public class ManagerIgre {
 
 	private static void checkResult(){
 		
-		if(DEBUG) System.out.println("Checking rezultat");
 		
 		if(spil.preostaloKarata()>0){
 			novaRuka();
 		} else {
+
+			if(DEBUG) System.out.println("Checking rezultat");
+			
 			if(poslednjiNosio)
 				igrac.dadajUNosene(tabla);
 			
@@ -205,7 +205,8 @@ public class ManagerIgre {
 			} else {
 				// RobiiTODO
 				
-				// if I'm a server... 
+				// if I'm a server...
+				if(menagerKomunikacije.me.amIServer())
 				zapocniIgru(klijent);
 			}
 		}

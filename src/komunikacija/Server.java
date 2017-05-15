@@ -11,9 +11,10 @@ public class Server extends KarteImplementacija implements ServerInterfejs{
 	
 	protected Server() throws RemoteException{
 		super();
+		super.amIServer = true;
 		// TODO Auto-generated constructor stub
 	}
-
+	
 	@Override
 	public void javiSe(KlijentInterfejs kl) throws RemoteException {
 		System.out.println("HELLO");
@@ -22,7 +23,7 @@ public class Server extends KarteImplementacija implements ServerInterfejs{
 		klijent=kl;
 		
 		// TODO spil
-		klijent.setImeIgraca2(ManagerIgre.igrac().getIme());
+		//klijent.setImeIgraca2(ManagerIgre.igrac().getIme()); Stefan.TODO
 		ManagerIgre.zapocniIgru(klijent);
 	}
 
