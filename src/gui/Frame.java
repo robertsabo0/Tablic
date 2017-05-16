@@ -4,21 +4,16 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.EventQueue;
-import java.awt.Graphics;
-import java.awt.event.ComponentAdapter;
-import java.awt.event.ComponentEvent;
-import java.awt.event.KeyAdapter;
 
-import javax.swing.JComponent;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.border.EmptyBorder;
-import javax.swing.event.MouseInputAdapter;
 import javax.swing.table.DefaultTableCellRenderer;
 
+import logic.Igrac;
 import logic.ManagerIgre;
 
 public class Frame extends JFrame {
@@ -64,7 +59,8 @@ public class Frame extends JFrame {
 		contentPane.setLayout(new BorderLayout(0, 0));
 		if(ManagerIgre.krajIgre()){
 			if(ManagerIgre.igrac().getUkupnoPoeni()>100){
-				PorukaOPobedniku p=new PorukaOPobedniku(ManagerIgre.igrac().getIme());
+				ManagerIgre.igrac();
+				PorukaOPobedniku p=new PorukaOPobedniku(Igrac.getIme());
 				p.setVisible(true);
 			}else{
 				PorukaOPobedniku p=new PorukaOPobedniku(ManagerIgre.getDrugiIgracIme());

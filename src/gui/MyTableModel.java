@@ -3,6 +3,7 @@ package gui;
 import javax.swing.table.AbstractTableModel;
 
 import logic.Igrac;
+import logic.ManagerIgre;
 
 public class MyTableModel extends AbstractTableModel {
 	/**
@@ -33,9 +34,9 @@ public class MyTableModel extends AbstractTableModel {
 		case 0:
 			return "game";
 		case 1:
-			return i.getIme();
+			return Igrac.getIme();
 		case 2:
-			return "Player 2";
+			return ManagerIgre.getDrugiIgracIme();
 		}
 		return null;
 	}
