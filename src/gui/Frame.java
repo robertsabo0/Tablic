@@ -133,6 +133,7 @@ public class Frame extends JFrame {
 		talon.osveziTalon();
 		tm.azuriraj();
 		south.osveziRuku();
+		north.osveziKarte();
 	}
 
 }

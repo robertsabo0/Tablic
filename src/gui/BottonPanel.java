@@ -51,16 +51,17 @@ public class BottonPanel extends JPanel {
 					if (talon.oznaceneNaTalonu().size() == 0) {
 						dugme.setVisible(false);
 						horizontalGlue_4.setVisible(false);
-						remove(dugme);
-						remove(horizontalGlue_4);
-						talon.odigraoSam(k, null);
+						if (talon.odigraoSam(k, null)) {
+							remove(dugme);
+							remove(horizontalGlue_4);
+						}
 					} else {
 						dugme.setVisible(false);
 						horizontalGlue_4.setVisible(false);
-						remove(dugme);
-						remove(horizontalGlue_4);
-						talon.odigraoSam(k, talon.oznaceneNaTalonu());
-						
+						if (talon.odigraoSam(k, talon.oznaceneNaTalonu())) {
+							remove(dugme);
+							remove(horizontalGlue_4);
+						}
 					}
 
 				}
@@ -71,8 +72,8 @@ public class BottonPanel extends JPanel {
 		add(horizontalGlue_4);
 
 	}
-	
-	public void osveziRuku (){
+
+	public void osveziRuku() {
 		removeAll();
 		getRuka(ManagerIgre.igrac().getURuci());
 		repaint();

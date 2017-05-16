@@ -212,6 +212,7 @@ public class ManagerIgre {
 				zapocniIgru(klijent);
 			}
 		}
+		Frame.frame.osvezi();
 	}
 	
 	public static boolean krajIgre(){

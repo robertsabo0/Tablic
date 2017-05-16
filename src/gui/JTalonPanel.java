@@ -44,14 +44,13 @@ public class JTalonPanel extends JPanel {
 		layout = new GridLayout(2, 2, 20, 20);
 		setLayout(layout);
 		getTalonDugmadi(ManagerIgre.tabla());
-		/*for (int i = 0; i < dugmadi.size(); i++) {
-			add(dugmadi.get(i));
-		}*/
+		/*
+		 * for (int i = 0; i < dugmadi.size(); i++) { add(dugmadi.get(i)); }
+		 */
 		osveziTalon();
 	}
-	
-	
-	public  void getTalonDugmadi(List<Karta> talon) {
+
+	public void getTalonDugmadi(List<Karta> talon) {
 		for (Karta k : talon) {
 			String slika = k.getSlika();
 			ImageIcon image1 = new ImageIcon(slika);
@@ -86,7 +85,8 @@ public class JTalonPanel extends JPanel {
 		}
 		return oznacene;
 	}
-	public void odigraoSam(Karta bacena, List<Karta> nositi) {
+
+	public boolean odigraoSam(Karta bacena, List<Karta> nositi) {
 		try {
 			if (nositi == null) {
 				ManagerIgre.odigraoSam(bacena);
@@ -96,12 +96,14 @@ public class JTalonPanel extends JPanel {
 			osveziTalon();
 			repaint();
 			frame.blokiraj();
+			return true;
 		} catch (NeMozeSeNositiException e) {
 			// TODO Auto-generated catch block
-			JOptionPane.showMessageDialog(null, "Ne može da nosite karte");
+			JOptionPane.showMessageDialog(frame, "Ne može da nosite karte");
+			return false;
 		}
 	}
-	
+
 	public static void odigraoJe(Karta bacena, List<Karta> nositi) {
 		if (nositi != null) {
 			for (Karta karta : nositi) {
@@ -112,8 +114,8 @@ public class JTalonPanel extends JPanel {
 		top.okreniKartu(bacena);
 		frame.odblokiraj();
 	}
-	
-	public void osveziTalon(){
+
+	public void osveziTalon() {
 		dugmadi.removeAll(dugmadi);
 		kartaDugme.remove(kartaDugme);
 		removeAll();

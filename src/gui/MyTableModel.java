@@ -50,10 +50,10 @@ public class MyTableModel extends AbstractTableModel {
 				return "score";
 			}
 			if (c == 1) {
-				i.getUkupnoPoeni();
+				return i.getUkupnoPoeni();
 			}
 			if (c == 2) {
-				i.getUkupnoPoeniProtivnika();
+				return i.getUkupnoPoeniProtivnika();
 
 			}
 

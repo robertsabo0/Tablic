@@ -63,4 +63,18 @@ public class TopPanel extends JPanel {
 		protivnikoveKarte.remove(i);
 		
 	}
+	
+	public void osveziKarte(){
+		ImageIcon image=new ImageIcon("pozadina.jpg");
+		for (int i=0; i<6; i++ ){
+			Component horizontalGlue = Box.createHorizontalGlue();
+			add(horizontalGlue);
+			JLabel lblSpil2 = new JLabel(image);
+			add(lblSpil2);
+			protivnikoveKarte.add(lblSpil2);
+			
+		}
+		Component horizontalGlue_1 = Box.createHorizontalGlue();
+		add(horizontalGlue_1);
+	}
 }
