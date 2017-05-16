@@ -17,6 +17,10 @@ public class MozeNositiTest {
 		Test10();
 		Test11();
 		Test12();
+		Test13();
+		Test14();
+		Test15();
+		Test16();
 	}
 
 	private static void Test1() {
@@ -158,6 +162,57 @@ public class MozeNositiTest {
 		else 
 			System.out.println("Test 12: Ne moze da nosi ==== "+bacena+" -" + nosi);
 	}
-	
+	private static void Test13() {
+		Karta bacena = new Karta(Znak.HERC, Vrednost.DVA);
+		List<Karta> nosi = new LinkedList<>();
+		nosi.add(new Karta(Znak.HERC, Vrednost.TRI));
+		nosi.add(new Karta(Znak.TREF, Vrednost.DVA));
+		
+		if(Karta.mozeNositi(bacena, nosi))
+			System.out.println("Test 13: Moze da nosi ==== "+bacena+" -" + nosi);
+		else 
+			System.out.println("Test 13: Ne moze da nosi ==== "+bacena+" -" + nosi);
+	}
+	private static void Test14() {
+		Karta bacena = new Karta(Znak.HERC, Vrednost.DEVET);
+		List<Karta> nosi = new LinkedList<>();
+		nosi.add(new Karta(Znak.HERC, Vrednost.DVA));
+		nosi.add(new Karta(Znak.TREF, Vrednost.TRI));
+		nosi.add(new Karta(Znak.TREF, Vrednost.DVA));
+		nosi.add(new Karta(Znak.HERC, Vrednost.TRI));
+		
+		if(Karta.mozeNositi(bacena, nosi))
+			System.out.println("Test 14: Moze da nosi ==== "+bacena+" -" + nosi);
+		else 
+			System.out.println("Test 14: Ne moze da nosi ==== "+bacena+" -" + nosi);
+	}private static void Test15() {
+		Karta bacena = new Karta(Znak.HERC, Vrednost.J);
+		List<Karta> nosi = new LinkedList<>();
+		nosi.add(new Karta(Znak.HERC, Vrednost.A));
+		nosi.add(new Karta(Znak.TREF, Vrednost.A));
+		nosi.add(new Karta(Znak.TREF, Vrednost.DVA));
+		nosi.add(new Karta(Znak.TREF, Vrednost.TRI));
+		nosi.add(new Karta(Znak.TREF, Vrednost.PET));
+		
+		if(Karta.mozeNositi(bacena, nosi))
+			System.out.println("Test 15: Moze da nosi ==== "+bacena+" -" + nosi);
+		else 
+			System.out.println("Test 15: Ne moze da nosi ==== "+bacena+" -" + nosi);
+	}
+	private static void Test16() {
+		Karta bacena = new Karta(Znak.HERC, Vrednost.J);
+		List<Karta> nosi = new LinkedList<>();
+		nosi.add(new Karta(Znak.HERC, Vrednost.A));
+		nosi.add(new Karta(Znak.TREF, Vrednost.A));
+		nosi.add(new Karta(Znak.KARO, Vrednost.A));
+		nosi.add(new Karta(Znak.TREF, Vrednost.DVA));
+		nosi.add(new Karta(Znak.TREF, Vrednost.TRI));
+		nosi.add(new Karta(Znak.TREF, Vrednost.PET));
+		
+		if(Karta.mozeNositi(bacena, nosi))
+			System.out.println("Test 16: Moze da nosi ==== "+bacena+" -" + nosi);
+		else 
+			System.out.println("Test 16: Ne moze da nosi ==== "+bacena+" -" + nosi);
+	}
 	
 }
