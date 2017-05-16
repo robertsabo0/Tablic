@@ -71,9 +71,10 @@ public class Karta implements Cloneable, Serializable{
 	}
 	
 
-	static boolean mozeNositi(Karta bacena, List<Karta> nositi) {
-		if(nositi.isEmpty())
+	static boolean mozeNositi(Karta bacena, List<Karta> nos) {
+		if(nos.isEmpty())
 			return true;
+		List<Karta> nositi = new ArrayList<>(nos);
 		nositi.add(0, bacena);
 		
 		List<VrednostInterface> allVrednosti = new ArrayList<>();
@@ -98,7 +99,6 @@ public class Karta implements Cloneable, Serializable{
 	}
 	
 	private static boolean mozeNositiNoA(VrednostInterface[] list) {
-		boolean ret = false;
 		VrednostInterface nosac = list[0];
 		List<VrednostInterface> ostali = new ArrayList<>(list.length);
 		for(int i = 1; i<list.length; i++){
@@ -112,7 +112,7 @@ public class Karta implements Cloneable, Serializable{
 			VrednostInterface prvi = ostali.get(0);
 			ostali.remove(prvi);
 			
-			for(int i = 2; i<ostali.length && !found; i++){
+			for(int i = 0; i<ostali.size() && !found; i++){
 				VrednostInterface tmp = ostali.get(i);
 				
 				int zbir = tmp.getVrednost() + prvi.getVrednost();
@@ -120,9 +120,11 @@ public class Karta implements Cloneable, Serializable{
 					continue;
 				
 				VrednostProsireno vr = VrednostProsireno.getByVrednost(zbir);
-				ostali.replace( i, vr); !!!
+				ostali.set(i, vr);
 				ostali.add(0, nosac);
-				found = found | mozeNositiNoA(ostali.toArray());
+				found = found || mozeNositiNoA(ostali.toArray(new VrednostInterface[ostali.size()]));
+				ostali.remove(0);
+				ostali.set(i, tmp);
 			}
 		}
 		return found;
