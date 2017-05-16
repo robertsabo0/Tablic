@@ -3,6 +3,9 @@ package logic;
 import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.List;
 
 public class Karta implements Cloneable, Serializable{
 	
@@ -86,7 +89,7 @@ public class Karta implements Cloneable, Serializable{
 	
 	int nosiPoena() {
 		int vr = 0;
-		if(vrednost.getVr() >= 10) vr = 1;
+		if(vrednost.getVrednost() >= 10) vr = 1;
 		if(vrednost.equals(Vrednost.DESET) && znak.equals(Znak.KARO))
 			vr = 2;
 		if(vrednost.equals(Vrednost.DVA) && znak.equals(Znak.TREF))
@@ -127,5 +130,75 @@ public class Karta implements Cloneable, Serializable{
 		return new Karta(znak, vrednost);
 	}
 	
+
+	static boolean mozeNositi(Karta bacena, List<Karta> nos) {
+		if(nos.isEmpty())
+			return true;
+		List<Karta> nositi = new ArrayList<>(nos);
+		nositi.add(0, bacena);
+		
+		List<VrednostInterface> allVrednosti = new ArrayList<>();
+		nositi.forEach(t -> allVrednosti.add(t.getVrednost()));
+		
+		return mozeNositi(allVrednosti.toArray(new VrednostInterface[allVrednosti.size()]));
+	}
 	
+	private static boolean mozeNositi(VrednostInterface[] list) {
+		boolean ret = false;
+		for(int i = 0 ; i<list.length && !ret; i++){
+			if(list[i].equals(Vrednost.A)){
+				list[i] = VrednostProsireno.JEDAN;
+				boolean rez = mozeNositi(list);
+				list[i] = VrednostProsireno.JEDANAEST;
+				ret = rez || mozeNositi(list);
+				list[i] = Vrednost.A;
+				return ret;
+			}
+		}
+		return mozeNositiNoA(list);
+	}
+	
+	private static boolean mozeNositiNoA(VrednostInterface[] list) {
+		VrednostInterface nosac = list[0];
+		List<VrednostInterface> ostali = new ArrayList<>(list.length);
+		for(int i = 1; i<list.length; i++){
+			if(nosac.getVrednost() != list[i].getVrednost())
+				ostali.add(list[i]);
+		}
+		if(ostali.isEmpty())
+			return true;
+		boolean found = false;
+		if(ostali.size() > 1){
+			VrednostInterface prvi = ostali.get(0);
+			ostali.remove(prvi);
+			
+			for(int i = 0; i<ostali.size() && !found; i++){
+				VrednostInterface tmp = ostali.get(i);
+				
+				int zbir = tmp.getVrednost() + prvi.getVrednost();
+				if(zbir > nosac.getVrednost())
+					continue;
+				
+				VrednostProsireno vr = VrednostProsireno.getByVrednost(zbir);
+				ostali.set(i, vr);
+				ostali.add(0, nosac);
+				found = found || mozeNositiNoA(ostali.toArray(new VrednostInterface[ostali.size()]));
+				ostali.remove(0);
+				ostali.set(i, tmp);
+			}
+		}
+		return found;
+	}
+	
+	public static void main(String[] args) {
+		Karta a1 = new Karta(Znak.HERC, Vrednost.A);
+		
+		List<Karta> k = new LinkedList<>();
+		k.add(new Karta(Znak.HERC, Vrednost.A));
+		k.add( new Karta(Znak.HERC, Vrednost.CETIRI));
+		k.add( new Karta(Znak.HERC, Vrednost.A));
+		k.add(new Karta(Znak.HERC, Vrednost.CETIRI));
+		
+		mozeNositi(a1, k);
+	}
 }
