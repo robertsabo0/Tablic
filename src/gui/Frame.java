@@ -26,6 +26,7 @@ public class Frame extends JFrame {
 	private JTable table;
 	public static Frame frame;
 	public static boolean blokiran;
+	public static JTalonPanel talon;
 	/**
 	 * Launch the application.
 	 */
@@ -101,7 +102,7 @@ public class Frame extends JFrame {
 		JPanel glavniSpil = new JGlavniSpilPanel();
 		centralni.add(glavniSpil, BorderLayout.EAST);
 		
-		JTalonPanel talon = new JTalonPanel(north, this);
+		talon = new JTalonPanel(north, this);
 		centralni.add(talon, BorderLayout.CENTER);
 		
 		JPanel south = new BottonPanel(talon);
@@ -126,6 +127,7 @@ public class Frame extends JFrame {
 	}
 	
 	public void odblokiraj (){
+		talon.osveziTalon();
 		my.deactivate();
 		getGlassPane().setVisible(false);
 	}
