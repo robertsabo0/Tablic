@@ -1,6 +1,6 @@
 package logic;
 
-public enum Vrednost {
+public enum Vrednost implements VrednostInterface{
 	A(11),
 	DVA(2),
 	TRI(3),
@@ -21,12 +21,12 @@ public enum Vrednost {
 		vr = v;
 	}
 
-	public int getVr() {
+	public int getVrednost() {
 		return vr;
 	}
 	
 	@Override
 	public String toString(){
-		return vr > 10 ? this.name() : this.getVr()+"";
+		return vr > 10 ? this.name() : this.getVrednost()+"";
 	}
 }
