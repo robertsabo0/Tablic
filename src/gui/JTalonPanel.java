@@ -12,6 +12,7 @@ import java.util.Map;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 import logic.Karta;
@@ -121,14 +122,16 @@ public class JTalonPanel extends JPanel {
 	public void nosi(Karta k, List<Karta> oznacene) {
 		try {
 			ManagerIgre.odigraoSam(k, oznacene);
+			for (Karta o : oznacene) {
+				skiniKartu(o);
+
+			}
+			
 		} catch (NeMozeSeNositiException e) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
+			JOptionPane.showMessageDialog(null, "Ne može da nosite karte");
 		}
-		for (Karta o : oznacene) {
-			skiniKartu(o);
-
-		}
+		
 	}
 
 	public void odigraoJe(Karta bacena, List<Karta> nositi) {

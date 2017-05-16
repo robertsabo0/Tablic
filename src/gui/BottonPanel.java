@@ -11,6 +11,7 @@ import javax.swing.Box;
 import javax.swing.BoxLayout;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 import logic.Karta;
@@ -36,6 +37,7 @@ public class BottonPanel extends JPanel {
 		getRuka(ruka);
 		setLayout(new BoxLayout(this, BoxLayout.X_AXIS));
 	}
+	
 	public void getRuka(List<Karta> ruka){
 		for(Karta k:ruka){
 			Component horizontalGlue_4 = Box.createHorizontalGlue();
@@ -47,11 +49,6 @@ public class BottonPanel extends JPanel {
 			dugme.addMouseListener(new MouseAdapter() {
 				@Override
 				public void mouseClicked(MouseEvent arg0) {
-					dugme.setVisible(false);
-					horizontalGlue_4.setVisible(false);
-					remove(dugme);
-					remove(horizontalGlue_4);
-					
 					if (talon.oznaceneNaTalonu().size()==0){
 						talon.postaviKartu(k);
 						ManagerIgre.odigraoSam(k);
@@ -59,9 +56,13 @@ public class BottonPanel extends JPanel {
 						talon.nosi(k);
 						try {
 							ManagerIgre.odigraoSam(k, talon.oznaceneNaTalonu());
+							dugme.setVisible(false);
+							horizontalGlue_4.setVisible(false);
+							remove(dugme);
+							remove(horizontalGlue_4);
 						} catch (NeMozeSeNositiException e) {
 							// TODO Auto-generated catch block
-							e.printStackTrace();
+							JOptionPane.showMessageDialog(null, "Ne može da nosite karte");
 						}
 					}
 						
