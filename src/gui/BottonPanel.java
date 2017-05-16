@@ -71,4 +71,10 @@ public class BottonPanel extends JPanel {
 		add(horizontalGlue_4);
 
 	}
+	
+	public void osveziRuku (){
+		removeAll();
+		getRuka(ManagerIgre.igrac().getURuci());
+		repaint();
+	}
 }

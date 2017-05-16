@@ -12,10 +12,12 @@ public class MyTableModel extends AbstractTableModel {
 	 */
 	private static final long serialVersionUID = -4465403780399873766L;
 	private Igrac i;
+
 	public MyTableModel(Igrac i) {
 		// TODO Auto-generated constructor stub
-		this.i=i;
+		this.i = i;
 	}
+
 	@Override
 	public int getColumnCount() {
 		return 3;
@@ -24,13 +26,13 @@ public class MyTableModel extends AbstractTableModel {
 	@Override
 	public int getRowCount() {
 		// TODO Auto-generated method stub
-		
-		return 5;
+
+		return ManagerIgre.igrac().getPoeni().size() + 1;
 	}
 
 	@Override
 	public String getColumnName(int column) {
-		switch(column){
+		switch (column) {
 		case 0:
 			return "game";
 		case 1:
@@ -42,34 +44,34 @@ public class MyTableModel extends AbstractTableModel {
 	}
 
 	@Override
-	public Object getValueAt(int arg0, int arg1) {
-		if(arg0==getRowCount()-1){
-			if(arg1==0){
+	public Object getValueAt(int r, int c) {
+		if (r == getRowCount() - 1) {
+			if (c == 0) {
 				return "score";
 			}
-			if(arg1==1){
+			if (c == 1) {
 				i.getUkupnoPoeni();
 			}
-			if(arg1==2){
+			if (c == 2) {
 				i.getUkupnoPoeniProtivnika();
-				
+
 			}
-			
-			
-		}
-		if(arg1==0){
-				return arg0+1;
-		}
-		if(arg1==1){
-			return 0;
-		}
-		if(arg1==2){
-			return 0;
+
+		} else {
+			if (c == 0) {
+				return r + 1;
+			}
+			if (c == 1) {
+				return ManagerIgre.igrac().getPoeni().get(r);
+			}
+			if (c == 2) {
+				return ManagerIgre.igrac().getPoeniProtivnika().get(r);
+			}
 		}
 		return null;
 	}
-	
-	public void azuriraj(){
+
+	public void azuriraj() {
 		fireTableDataChanged();
 	}
 }

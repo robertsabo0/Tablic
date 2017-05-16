@@ -1,6 +1,7 @@
 package gui;
 
 import java.awt.Component;
+import java.awt.Dimension;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -28,7 +29,7 @@ public class TopPanel extends JPanel {
 	static JButton prvaKarta,drugaKarta,trecaKarta,cetvrtaKarta,petaKarta,sestaKarta;
 	public TopPanel() {
 		setLayout(new BoxLayout(this, BoxLayout.X_AXIS));
-		
+		setPreferredSize(new Dimension(0, 125));
 		
 		ImageIcon image=new ImageIcon("pozadina.jpg");
 		for (int i=0; i<6; i++ ){
