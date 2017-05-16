@@ -26,7 +26,6 @@ public class TopPanel extends JPanel {
 	
 	List<JLabel> protivnikoveKarte = new ArrayList<>();
 	
-	static JButton prvaKarta,drugaKarta,trecaKarta,cetvrtaKarta,petaKarta,sestaKarta;
 	public TopPanel() {
 		setLayout(new BoxLayout(this, BoxLayout.X_AXIS));
 		setPreferredSize(new Dimension(0, 125));

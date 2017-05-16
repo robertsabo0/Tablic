@@ -56,9 +56,10 @@ public class BottonPanel extends JPanel {
 							remove(horizontalGlue_4);
 						}
 					} else {
-						dugme.setVisible(false);
-						horizontalGlue_4.setVisible(false);
+						
 						if (talon.odigraoSam(k, talon.oznaceneNaTalonu())) {
+							dugme.setVisible(false);
+							horizontalGlue_4.setVisible(false);
 							remove(dugme);
 							remove(horizontalGlue_4);
 						}
