@@ -100,8 +100,32 @@ public class Karta implements Cloneable, Serializable{
 	private static boolean mozeNositiNoA(VrednostInterface[] list) {
 		boolean ret = false;
 		VrednostInterface nosac = list[0];
-		for()
-		return false;
+		List<VrednostInterface> ostali = new ArrayList<>(list.length);
+		for(int i = 1; i<list.length; i++){
+			if(nosac.getVrednost() != list[i].getVrednost())
+				ostali.add(list[i]);
+		}
+		if(ostali.isEmpty())
+			return true;
+		boolean found = false;
+		if(ostali.size() > 1){
+			VrednostInterface prvi = ostali.get(0);
+			ostali.remove(prvi);
+			
+			for(int i = 2; i<ostali.length && !found; i++){
+				VrednostInterface tmp = ostali.get(i);
+				
+				int zbir = tmp.getVrednost() + prvi.getVrednost();
+				if(zbir > nosac.getVrednost())
+					continue;
+				
+				VrednostProsireno vr = VrednostProsireno.getByVrednost(zbir);
+				ostali.replace( i, vr); !!!
+				ostali.add(0, nosac);
+				found = found | mozeNositiNoA(ostali.toArray());
+			}
+		}
+		return found;
 	}
 	
 	public static void main(String[] args) {
