@@ -70,10 +70,11 @@ public class TopPanel extends JPanel {
 			add(horizontalGlue);
 			JLabel lblSpil2 = new JLabel(image);
 			add(lblSpil2);
-			protivnikoveKarte.add(lblSpil2);
+			if(protivnikoveKarte.size()<6)
+				protivnikoveKarte.add(lblSpil2);
 			
 		}
-		Component horizontalGlue_1 = Box.createHorizontalGlue();
-		add(horizontalGlue_1);
+		//Component horizontalGlue_1 = Box.createHorizontalGlue();
+		//add(horizontalGlue_1);
 	}
 }

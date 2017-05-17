@@ -124,6 +124,10 @@ public class ManagerIgre {
 		if(!igramPrvi){
 			Frame.blokiran=true;
 		}
+		if(Frame.frame!=null){//zbog nove partije
+			Frame.frame.osvezi();
+		}
+		
 	}
 	public static void odigraoSam(Karta bacena){
 		if(DEBUG) System.out.println("Bacena karta: "+bacena);
@@ -199,6 +203,8 @@ public class ManagerIgre {
 			
 			if(poslednjiNosio)
 				igrac.dadajUNosene(tabla);
+			
+			tabla.clear();
 			
 			igrac.sracunajPoene();
 			
