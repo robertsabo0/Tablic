@@ -206,8 +206,7 @@ public class ManagerIgre {
 			if(poslednjiNosio)
 				igrac.dadajUNosene(tabla);
 			
-			tabla.clear();
-			
+			tabla=new ArrayList<>();
 			igrac.sracunajPoene();
 			
 			if(krajIgre()){
