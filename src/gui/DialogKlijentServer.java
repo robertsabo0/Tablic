@@ -15,6 +15,7 @@ import javax.swing.ButtonGroup;
 import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 import javax.swing.JTextField;
@@ -128,21 +129,16 @@ public class DialogKlijentServer extends JDialog {
 				connectPanel.add(panelBottom, BorderLayout.SOUTH);
 				{
 					btnIgra = new JButton("Igra");
-					btnIgra.setEnabled(false);
 					btnIgra.addActionListener(new ActionListener() {
 						public void actionPerformed(ActionEvent e) {
 							ManagerIgre.igrac().setIme(textImeIgraca.getText());
 							MenagerKomunikacije menadzer = new MenagerKomunikacije();
-							//Frame igra = new Frame ();
-							//igra.setVisible(true);
-							//dispose();
 							if(rdbnKlijent.isSelected()){
 								try {
 									menadzer.konektujSe(textAdresaServera.getText(), textImeIgraca.getText());
 									Frame.main(new String[0]);
 								} catch (NeuspesnaKonekcijaException e1) {
-									// TODO Auto-generated catch block
-									e1.printStackTrace();
+									JOptionPane.showMessageDialog(DialogKlijentServer.this, "Mora da postoji server da bi ste igrali");
 								} catch (NotBoundException e1) {
 									// TODO Auto-generated catch block
 									e1.printStackTrace();
@@ -155,9 +151,6 @@ public class DialogKlijentServer extends JDialog {
 							}
 						}
 					});
-					if (rdbnKlijent.isSelected()){
-						btnIgra.setEnabled(false);
-					}
 					panelBottom.add(btnIgra);
 				}
 			}
@@ -172,12 +165,6 @@ public class DialogKlijentServer extends JDialog {
 				}
 				{
 					textAdresaServera = new JTextField("localhost");
-					textAdresaServera.addMouseListener(new MouseAdapter() {
-						@Override
-						public void mouseClicked(MouseEvent arg0) {
-							btnIgra.setEnabled(true);
-						}
-					});
 					klijentPanel.add(textAdresaServera);
 					textAdresaServera.setColumns(10);
 				}
