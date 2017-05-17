@@ -65,17 +65,6 @@ public class Frame extends JFrame {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(new BorderLayout(0, 0));
-		if (ManagerIgre.krajIgre()) {
-			if (ManagerIgre.igrac().getUkupnoPoeni() > 100) {
-				ManagerIgre.igrac();
-				PorukaOPobedniku p = new PorukaOPobedniku(Igrac.getIme());
-				p.setVisible(true);
-			} else {
-				PorukaOPobedniku p = new PorukaOPobedniku(ManagerIgre.getDrugiIgracIme());
-				p.setVisible(true);
-			}
-
-		}
 		north = new TopPanel();
 		north.setBackground(Color.BLUE);
 		contentPane.add(north, BorderLayout.NORTH);

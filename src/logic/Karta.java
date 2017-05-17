@@ -190,15 +190,4 @@ public class Karta implements Cloneable, Serializable{
 		return found;
 	}
 	
-	public static void main(String[] args) {
-		Karta a1 = new Karta(Znak.HERC, Vrednost.A);
-		
-		List<Karta> k = new LinkedList<>();
-		k.add(new Karta(Znak.HERC, Vrednost.A));
-		k.add( new Karta(Znak.HERC, Vrednost.CETIRI));
-		k.add( new Karta(Znak.HERC, Vrednost.A));
-		k.add(new Karta(Znak.HERC, Vrednost.CETIRI));
-		
-		mozeNositi(a1, k);
-	}
 }

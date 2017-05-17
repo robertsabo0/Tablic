@@ -3,7 +3,7 @@ package logic;
 import java.util.LinkedList;
 import java.util.List;
 
-public class MozeNositiTest {
+class MozeNositiTest {
 	public static void main(String[] args) {
 		Test1();
 		Test2();
