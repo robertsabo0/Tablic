@@ -98,6 +98,7 @@ public class DialogKlijentServer extends JDialog {
 				connectPanel.add(panelRadioButton, BorderLayout.NORTH);
 				{
 					rdbnKlijent = new JRadioButton("Klijent");
+					
 					rdbnKlijent.addActionListener(new ActionListener() {
 						public void actionPerformed(ActionEvent e) {
 							klijentPanel.setVisible(true);
@@ -107,7 +108,8 @@ public class DialogKlijentServer extends JDialog {
 					panelRadioButton.add(rdbnKlijent);
 				}
 				{
-					rdbnServer = new JRadioButton("Server");
+					rdbnServer= new JRadioButton("Server");
+					rdbnServer.setSelected(true);
 					rdbnServer.addActionListener(new ActionListener() {
 						public void actionPerformed(ActionEvent e) {
 							klijentPanel.setVisible(false);

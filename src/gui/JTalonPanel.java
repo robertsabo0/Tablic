@@ -113,12 +113,15 @@ public class JTalonPanel extends JPanel {
 		}
 		top.okreniKartu(bacena);
 		frame.odblokiraj();
+		top.osveziKarte();
+		frame.repaint();
 	}
 
 	public void osveziTalon() {
 		dugmadi.removeAll(dugmadi);
 		kartaDugme.remove(kartaDugme);
 		removeAll();
+		revalidate();
 		repaint();
 		getTalonDugmadi(ManagerIgre.tabla());
 	}

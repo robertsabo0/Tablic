@@ -54,9 +54,9 @@ public class Frame extends JFrame {
 	 * Create the frame.
 	 */
 	public Frame() {
-		if (DialogKlijentServer.dks!=null)
+		if (DialogKlijentServer.dks != null)
 			DialogKlijentServer.dks.dispose();
-		setTitle("Tablic: "+Igrac.getIme());
+		setTitle("Tablic: " + Igrac.getIme());
 		setBackground(Color.BLUE);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 650, 400);
@@ -115,12 +115,12 @@ public class Frame extends JFrame {
 		south.setBackground(Color.BLUE);
 		contentPane.add(south, BorderLayout.SOUTH);
 
+		frame = this;
 	}
 
 	MyGlassPane my = new MyGlassPane();
 
 	public void blokiraj() {
-
 		setGlassPane(my);
 		my.activate();
 		getGlassPane().setVisible(true);
@@ -131,12 +131,20 @@ public class Frame extends JFrame {
 		my.deactivate();
 		getGlassPane().setVisible(false);
 	}
+	public void osveziIBlokiraj(){
 
+		osvezi();
+		//if (!ManagerIgre.igramPrvi){
+		//	blokiraj();
+		//}
+	}
+	
 	public void osvezi() {
 		talon.osveziTalon();
 		tm.azuriraj();
 		south.osveziRuku();
 		north.osveziKarte();
+
 	}
 
 }

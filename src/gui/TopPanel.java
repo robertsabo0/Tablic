@@ -12,6 +12,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import logic.Karta;
+import logic.ManagerIgre;
 
 public class TopPanel extends JPanel {
 
@@ -41,7 +42,7 @@ public class TopPanel extends JPanel {
 
 	public void okreniKartu(Karta bacena) {
 		int i = (int) (Math.random() * protivnikoveKarte.size());
-
+		
 		JLabel karta = protivnikoveKarte.get(i);
 		ImageIcon icon = new ImageIcon(bacena.getSlika());
 		karta.setIcon(icon);
@@ -54,7 +55,8 @@ public class TopPanel extends JPanel {
 		karta.setVisible(false);
 		remove(karta);
 		protivnikoveKarte.remove(i);
-		osveziKarte();
+		//if ( ManagerIgre.igrac().getURuci().size()==6)
+			//osveziKarte();
 	}
 
 	public void osveziKarte() {

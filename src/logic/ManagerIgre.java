@@ -29,12 +29,12 @@ public class ManagerIgre {
 		ManagerIgre.drugiIgracIme = drugiIgracIme;
 	}
 
-	private static boolean igramPrvi;
+	public static boolean igramPrvi;
 	private static boolean poslednjiNosio;
 	
 	private static List<Karta> tabla;
 	
-	final static boolean DEBUG = true;
+	final static boolean DEBUG = false;
 	
 	static MenagerKomunikacije menagerKomunikacije;
 	
@@ -67,9 +67,8 @@ public class ManagerIgre {
 		mojSpil.addAll(s.uzmi(24));
 		tudjiSpil.addAll(s.uzmi(24));
 		
-		boolean igramPrvi = igrac.getPoeni().size() % 2 == 0;
+		boolean igramPrvi = true;// igrac.getPoeni().size() % 2 == 0;
 		
-		// test
 		zapocniIgru(new Spil(mojSpil), igramPrvi);
 		
 		if(klijent!=null){
@@ -121,12 +120,10 @@ public class ManagerIgre {
 		
 		if(DEBUG) stampajRuku();
 		
-		if(!igramPrvi){
-			Frame.blokiran=true;
-		}
+		Frame.blokiran=!igramPrvi;
 		
 		if(Frame.frame!=null){//zbog nove partije
-			Frame.frame.osvezi();
+			Frame.frame.osveziIBlokiraj();
 		}
 		
 	}
@@ -182,6 +179,7 @@ public class ManagerIgre {
 		if(igrac.getURuci().isEmpty() && igramPrvi)
 			checkResult();
 		JTalonPanel.odigraoJe(bacena, nositi);
+		
 	}
 	
 	private static boolean srediTablu(Karta bacena, List<Karta> nositi) {
@@ -197,7 +195,7 @@ public class ManagerIgre {
 	private static void checkResult(){
 		
 		if(DEBUG) System.out.println("Checking rezultat");
-		if(spil.preostaloKarata()>0){
+		if(false){//spil.preostaloKarata()>0){
 			novaRuka();
 		} else {
 
@@ -210,23 +208,29 @@ public class ManagerIgre {
 			igrac.sracunajPoene();
 			
 			if(krajIgre()){
-				JOptionPane.showMessageDialog(null, "Kraj igre!");
+				Frame.frame.osvezi();
+				if (igrac.getUkupnoPoeni() > igrac.getUkupnoPoeniProtivnika())
+					JOptionPane.showMessageDialog(null, "Pobenik je "+Igrac.getIme());
+				else
+					JOptionPane.showMessageDialog(null, "Pobenik je "+getDrugiIgracIme());
 			} else {
 				// RobiiTODO
-				
 				// if I'm a server...
 				if(menagerKomunikacije.me.amIServer())
-				zapocniIgru(klijent);
+					zapocniIgru(klijent);
 			}
+			if(DEBUG) System.out.println("Time to refresh");
+			//if (!igramPrvi)
+				//Frame.frame.blokiraj();
+			
 		}
 
-		if(DEBUG) System.out.println("Time to refresh");
-		Frame.frame.osvezi();
+		
 	}
 	
 	public static boolean krajIgre(){
 		if(DEBUG) System.out.println("Igra je zavrsena");
-		return igrac.getUkupnoPoeni() > 100 || igrac.getUkupnoPoeniProtivnika() > 100;
+		return igrac.getUkupnoPoeni() > 1 || igrac.getUkupnoPoeniProtivnika() > 1;
 	}
 	
 }
