@@ -8,7 +8,6 @@ import java.util.List;
 import javax.swing.Box;
 import javax.swing.BoxLayout;
 import javax.swing.ImageIcon;
-import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
@@ -25,7 +24,6 @@ public class TopPanel extends JPanel {
 	 */
 
 	List<JLabel> protivnikoveKarte = new ArrayList<>();
-	private int brojac = 0;
 
 	public TopPanel() {
 		setLayout(new BoxLayout(this, BoxLayout.X_AXIS));

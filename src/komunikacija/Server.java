@@ -1,13 +1,16 @@
 package komunikacija;
-import komunikacija.KarteImplementacija;
 import java.rmi.RemoteException;
-import java.util.LinkedList;
 
 import gui.Frame;
+import logic.Igrac;
 import logic.ManagerIgre;
 
 public class Server extends KarteImplementacija implements ServerInterfejs{
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private KlijentInterfejs klijent=null;
 	
 	protected Server() throws RemoteException{
@@ -30,7 +33,8 @@ public class Server extends KarteImplementacija implements ServerInterfejs{
 		Frame.main(new String[0]);
 
 		
-		MenagerKomunikacije.me.posaljiImeIgraca(ManagerIgre.igrac().getIme());
+		ManagerIgre.igrac();
+		MenagerKomunikacije.me.posaljiImeIgraca(Igrac.getIme());
 		
 
 	}

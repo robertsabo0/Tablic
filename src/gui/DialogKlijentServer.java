@@ -38,6 +38,7 @@ public class DialogKlijentServer extends JDialog {
 	public static JTextField textImeIgraca;
 	private JTextField textAdresaServera;
 	JPanel klijentPanel;
+	public static DialogKlijentServer dks;
 
 	/**
 	 * Launch the application.
@@ -56,6 +57,7 @@ public class DialogKlijentServer extends JDialog {
 	 * Create the dialog.
 	 */
 	public DialogKlijentServer() {
+		dks=this;
 		setTitle("Tablic");
 		setBounds(100, 100, 382, 182);
 		getContentPane().setLayout(new BorderLayout());

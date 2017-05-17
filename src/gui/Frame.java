@@ -54,6 +54,8 @@ public class Frame extends JFrame {
 	 * Create the frame.
 	 */
 	public Frame() {
+		if (DialogKlijentServer.dks!=null)
+			DialogKlijentServer.dks.dispose();
 		setTitle("Tablic: "+Igrac.getIme());
 		setBackground(Color.BLUE);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
