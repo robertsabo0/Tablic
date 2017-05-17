@@ -82,7 +82,6 @@ public class ManagerIgre {
 	}
 	public static void setImeIgraca2(String imeIgraca2){
 		drugiIgracIme=imeIgraca2;
-		System.out.println("Ime 2 je"+drugiIgracIme);
 	}
 	public static String getImeIgraca2(){
 		return drugiIgracIme;
