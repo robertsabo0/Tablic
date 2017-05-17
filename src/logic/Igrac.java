@@ -93,7 +93,6 @@ public class Igrac {
 	}
 
 	public void setIme(String ime) {
-		System.out.println("Ime je "+ime);
 		this.ime = ime;
 	}
 	
