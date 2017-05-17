@@ -30,13 +30,7 @@ public class TopPanel extends JPanel {
 		setLayout(new BoxLayout(this, BoxLayout.X_AXIS));
 		setPreferredSize(new Dimension(0, 125));
 		osveziKarte();
-		/*
-		 * ImageIcon image=new ImageIcon("pozadina.jpg"); for (int i=0; i<6; i++
-		 * ){ horizontalGlue = Box.createHorizontalGlue(); add(horizontalGlue);
-		 * JLabel lblSpil2 = new JLabel(image); add(lblSpil2);
-		 * protivnikoveKarte.add(lblSpil2); brojac++; } Component
-		 * horizontalGlue_1 = Box.createHorizontalGlue(); add(horizontalGlue_1);
-		 */
+		
 
 	}
 

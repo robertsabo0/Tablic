@@ -123,9 +123,6 @@ public class Frame extends JFrame {
 	public void osveziIBlokiraj(){
 
 		osvezi();
-		//if (!ManagerIgre.igramPrvi){
-		//	blokiraj();
-		//}
 	}
 	
 	public void osvezi() {

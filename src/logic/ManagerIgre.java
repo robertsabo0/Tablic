@@ -194,7 +194,7 @@ public class ManagerIgre {
 	private static void checkResult(){
 		
 		if(DEBUG) System.out.println("Checking rezultat");
-		if(false){//spil.preostaloKarata()>0){
+		if(spil.preostaloKarata()>0){
 			novaRuka();
 		} else {
 
@@ -229,7 +229,7 @@ public class ManagerIgre {
 	
 	public static boolean krajIgre(){
 		if(DEBUG) System.out.println("Igra je zavrsena");
-		return igrac.getUkupnoPoeni() > 1 || igrac.getUkupnoPoeniProtivnika() > 1;
+		return igrac.getUkupnoPoeni() > 100 || igrac.getUkupnoPoeniProtivnika() > 100;
 	}
 	
 }

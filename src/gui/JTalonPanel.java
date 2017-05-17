@@ -44,9 +44,6 @@ public class JTalonPanel extends JPanel {
 		layout = new GridLayout(2, 2, 20, 20);
 		setLayout(layout);
 		getTalonDugmadi(ManagerIgre.tabla());
-		/*
-		 * for (int i = 0; i < dugmadi.size(); i++) { add(dugmadi.get(i)); }
-		 */
 		osveziTalon();
 	}
 
