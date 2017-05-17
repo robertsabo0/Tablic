@@ -54,6 +54,7 @@ public class Frame extends JFrame {
 	 * Create the frame.
 	 */
 	public Frame() {
+		setTitle("Tablic: "+Igrac.getIme());
 		setBackground(Color.BLUE);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 650, 400);
@@ -133,7 +134,6 @@ public class Frame extends JFrame {
 		talon.osveziTalon();
 		tm.azuriraj();
 		south.osveziRuku();
-		north.osveziKarte();
 	}
 
 }
