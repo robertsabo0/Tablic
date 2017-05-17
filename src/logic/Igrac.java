@@ -35,7 +35,11 @@ public class Igrac {
 	void sracunajPoene(){
 		Integer n = noseno.stream().map(Karta::nosiPoena).reduce(0, (a,b) -> a+b);
 		Integer n_pr = 23-n;
-		if(noseno.size() > 26) n+=3;
+		if(noseno.size() > 26){
+			n+=3;
+		} else {
+			n_pr += 3;
+		}
 		
 		addOnLast(poeni, n);
 		addOnLast(poeniProtivnika, n_pr);

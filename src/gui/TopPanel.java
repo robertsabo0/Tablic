@@ -23,31 +23,27 @@ public class TopPanel extends JPanel {
 	/**
 	 * Create the panel.
 	 */
-	
+
 	List<JLabel> protivnikoveKarte = new ArrayList<>();
-	
+	private int brojac = 0;
+
 	public TopPanel() {
 		setLayout(new BoxLayout(this, BoxLayout.X_AXIS));
 		setPreferredSize(new Dimension(0, 125));
-		
-		ImageIcon image=new ImageIcon("pozadina.jpg");
-		for (int i=0; i<6; i++ ){
-			Component horizontalGlue = Box.createHorizontalGlue();
-			add(horizontalGlue);
-			JLabel lblSpil2 = new JLabel(image);
-			add(lblSpil2);
-			protivnikoveKarte.add(lblSpil2);
-			
-		}
-		Component horizontalGlue_1 = Box.createHorizontalGlue();
-		add(horizontalGlue_1);
-		
+		osveziKarte();
+		/*
+		 * ImageIcon image=new ImageIcon("pozadina.jpg"); for (int i=0; i<6; i++
+		 * ){ horizontalGlue = Box.createHorizontalGlue(); add(horizontalGlue);
+		 * JLabel lblSpil2 = new JLabel(image); add(lblSpil2);
+		 * protivnikoveKarte.add(lblSpil2); brojac++; } Component
+		 * horizontalGlue_1 = Box.createHorizontalGlue(); add(horizontalGlue_1);
+		 */
+
 	}
-	
-	
-	public void okreniKartu(Karta bacena){
-		int i = (int) (Math.random()*protivnikoveKarte.size());
-		
+
+	public void okreniKartu(Karta bacena) {
+		int i = (int) (Math.random() * protivnikoveKarte.size());
+
 		JLabel karta = protivnikoveKarte.get(i);
 		ImageIcon icon = new ImageIcon(bacena.getSlika());
 		karta.setIcon(icon);
@@ -60,20 +56,23 @@ public class TopPanel extends JPanel {
 		karta.setVisible(false);
 		remove(karta);
 		protivnikoveKarte.remove(i);
-		
+		osveziKarte();
 	}
-	
-	public void osveziKarte(){
-		ImageIcon image=new ImageIcon("pozadina.jpg");
-		for (int i=0; i<6; i++ ){
-			Component horizontalGlue = Box.createHorizontalGlue();
-			add(horizontalGlue);
-			JLabel lblSpil2 = new JLabel(image);
-			add(lblSpil2);
-			protivnikoveKarte.add(lblSpil2);
-			
+
+	public void osveziKarte() {
+		if (protivnikoveKarte.isEmpty()) {
+			removeAll();
+			ImageIcon image = new ImageIcon("pozadina.jpg");
+			for (int i = 0; i < 6; i++) {
+				Component horizontalGlue = Box.createHorizontalGlue();
+				add(horizontalGlue);
+				JLabel lblSpil2 = new JLabel(image);
+				add(lblSpil2);
+				if (protivnikoveKarte.size() < 6)
+					protivnikoveKarte.add(lblSpil2);
+			}
+			Component horizontalGlue_1 = Box.createHorizontalGlue();
+			add(horizontalGlue_1);
 		}
-		Component horizontalGlue_1 = Box.createHorizontalGlue();
-		add(horizontalGlue_1);
 	}
 }

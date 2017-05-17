@@ -123,6 +123,11 @@ public class ManagerIgre {
 		if(!igramPrvi){
 			Frame.blokiran=true;
 		}
+		
+		if(Frame.frame!=null){//zbog nove partije
+			Frame.frame.osvezi();
+		}
+		
 	}
 	public static void odigraoSam(Karta bacena){
 		if(DEBUG) System.out.println("Bacena karta: "+bacena);
@@ -153,12 +158,13 @@ public class ManagerIgre {
 			uPoene.add(bacena);
 			igrac.dadajUNosene(uPoene);
 		}
-		
-		menagerKomunikacije.odigraoSam(bacena, nositi);
 
 		if(igrac.getURuci().isEmpty() && !igramPrvi){
 			checkResult();
 		}
+
+		menagerKomunikacije.odigraoSam(bacena, nositi);
+
 	}
 
 	public static void odigraoJe(Karta bacena, List<Karta> nositi){
@@ -189,16 +195,17 @@ public class ManagerIgre {
 
 	private static void checkResult(){
 		
-		
+		if(DEBUG) System.out.println("Checking rezultat");
 		if(spil.preostaloKarata()>0){
 			novaRuka();
 		} else {
 
-			if(DEBUG) System.out.println("Checking rezultat");
+			
 			
 			if(poslednjiNosio)
 				igrac.dadajUNosene(tabla);
 			
+			tabla=new ArrayList<>();
 			igrac.sracunajPoene();
 			
 			if(krajIgre()){
@@ -211,6 +218,8 @@ public class ManagerIgre {
 				zapocniIgru(klijent);
 			}
 		}
+
+		if(DEBUG) System.out.println("Time to refresh");
 		Frame.frame.osvezi();
 	}
 	
